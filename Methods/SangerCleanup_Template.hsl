@@ -1,0 +1,39 @@
+#include "SangerCleanup_Template.res"
+global device ML_STAR ("SangerCleanup_Template.lay", "ML_STAR", hslTrue);
+/* {{ 2 "LibraryInsertLine" "" */ // }} ""
+/* {{ 2 "VariableInsertLine" "" */ // }} ""
+// {{ 2 "TemplateIncludeBlock" ""
+ namespace _Method { #include "HSLMETEDLib.hs_" } 
+ namespace _Method { #include "HSLMECCLib.hs_" } 
+ namespace _Method { #include "HSLPTLLib.hsl" } 
+// }} ""
+// {{{ 2 "LocalSubmethodInclude" ""
+ namespace _Method {  #include __filename__ ".sub"  } 
+// }} ""
+/* {{ 2 "ProcessInsertLine" "" */ // }} ""
+// {{{ 5 "main" "Begin"
+namespace _Method { method main(  ) void {
+// }} ""
+// {{ 5 "main" "InitLocals"
+// }} ""
+// {{ 2 "AutoInitBlock" ""
+PTL::SetWashingStateDefault("RinseTime1", 5);
+PTL::SetWashingStateDefault("SoakTime1", 5);
+PTL::SetWashingStateDefault("FlowRate1", 11);
+PTL::SetWashingStateDefault("RinseTime2", 0);
+PTL::SetWashingStateDefault("SoakTime2", 0);
+PTL::SetWashingStateDefault("FlowRate2", 11);
+PTL::SetWashingStateDefault("DrainingTime", 10);
+PTL::SetWashingStateDefault("StartWashLiquid", 0);
+PTL::SetLoadingStateDefault("RecoveryOptionContinue", hslTrue);
+PTL::SetLoadingStateDefault("RecoveryOptionExclude", hslTrue);
+PTL::SetLoadingStateDefault("RecoveryOptionDefault", 0);
+PTL::SetLoadingStateDefault("KitLotCheckEnabled", hslFalse);
+::RegisterAbortHandler( "OnAbort");
+// }} ""
+// {{ 2 "AutoExitBlock" ""
+// }} ""
+// {{{ 5 "main" "End"
+} }
+// }} ""
+// $$author=ta16$$valid=0$$time=2026-06-24 14:43$$checksum=e31cd88b$$length=083$$
