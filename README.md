@@ -16,4 +16,5 @@ Methods will also have functionality built-in to select between one and two plat
 
 
 ## Requirements
-
+- Create a new folder in the following file path "C:\Program Files (x86)\HAMILTON\Methods" named 'SangerCleanup'
+- Use this as your destination location when cloning this repository
