@@ -1,6 +1,6 @@
 
 // this ALWAYS GENERATED file contains the sub-method library header
-// Generated at 24/06/2026 15:15:39
+// Generated at 01/07/2026 10:44:15
 
 #pragma once
 #ifndef HSL_RUNTIME
@@ -11,7 +11,7 @@ function Abstract(  ) void { }
 function HHS_Heat( variable intTemp ) void { }
 function HHS_Lock( variable blnGripState ) void { }
 function HHS_Shake( variable intSpeed ) void { }
-function PIP_96H_DWPToSWP( device & ML_STAR, sequence & seqDestination, variable intVolume, variable intLiquidType ) void { }
+function PIP_96H_DWPToDWP( device & ML_STAR, sequence & seqDestination, variable intVolume, variable intLiquidType ) void { }
 function SYSTEM_Abort( device & ML_STAR ) void { }
 function SYSTEM_Close( device & ML_STAR ) void { }
 function SYSTEM_Init( device & ML_STAR, sequence seqCORE, sequence seq_5mLTipSequence, sequence seq_PBS, sequence seq_Media, sequence seq_TrypLE, sequence seq_Waste, sequence seq_Falcon, variable blnSim ) void { }
@@ -25,4 +25,4 @@ function TRP_PCR_CORE( sequence seqSource, sequence seqDestination, device & ML_
 #ifdef HSL_RUNTIME
 #include __filename__ ".hsi"
 #endif
-// $$author=ta16$$valid=0$$time=2026-06-24 15:15$$checksum=99b432ad$$length=081$$
+// $$author=ta16$$valid=0$$time=2026-07-01 10:44$$checksum=6b90a5d5$$length=081$$

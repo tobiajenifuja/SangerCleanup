@@ -35,7 +35,7 @@ function Abstract(  ) void ;
 function HHS_Heat( variable intTemp ) void ;
 function HHS_Lock( variable blnGripState ) void ;
 function HHS_Shake( variable intSpeed ) void ;
-function PIP_96H_DWPToSWP( device & ML_STAR, sequence & seqDestination, variable intVolume, variable intLiquidType ) void ;
+function PIP_96H_DWPToDWP( device & ML_STAR, sequence & seqDestination, variable intVolume, variable intLiquidType ) void ;
 function SYSTEM_Abort( device & ML_STAR ) void ;
 function SYSTEM_Close( device & ML_STAR ) void ;
 function SYSTEM_Init( device & ML_STAR, sequence seqCORE, sequence seq_5mLTipSequence, sequence seq_PBS, sequence seq_Media, sequence seq_TrypLE, sequence seq_Waste, sequence seq_Falcon, variable blnSim ) void ;
@@ -1331,8 +1331,8 @@ Trace(">> [SIM] Hamilton HHS ", arrHHSDevices[loopCounter1-1], ": Close;");
 // {{{ 5 "HHS_Lock" "End"
 }
 // }} ""
-// {{{ 5 "PIP_96H_DWPToSWP" "Begin"
-function PIP_96H_DWPToSWP( device & ML_STAR, sequence & seqDestination, variable intVolume, variable intLiquidType ) void {
+// {{{ 5 "PIP_96H_DWPToDWP" "Begin"
+function PIP_96H_DWPToDWP( device & ML_STAR, sequence & seqDestination, variable intVolume, variable intLiquidType ) void {
 // }} ""
 private variable intLoopNumber;
 private variable intChannelPerTransfer;
@@ -1352,7 +1352,7 @@ private variable intAspirateHeight;
 private variable intNumberOfChannels;
 private variable strLiquidClass;
 private variable intMixVolume;
-// {{ 5 "PIP_96H_DWPToSWP" "InitLocals"
+// {{ 5 "PIP_96H_DWPToDWP" "InitLocals"
 // }} ""
 // {{ 73 1 0 "7a44f397_c9c7_4fa6_96fdb0fff6823090" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
@@ -1609,7 +1609,7 @@ if (loopCounter2 == intPipettingLoop)
 // {{{ 143 1 0 "c6ae5ec2_a220_4a16_9cb2cdd4d5089ba4" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 SeqResetSequenceIndexes(seqDestination);
 // }} ""
-// {{{ 5 "PIP_96H_DWPToSWP" "End"
+// {{{ 5 "PIP_96H_DWPToDWP" "End"
 }
 // }} ""
 // {{{ 5 "TRP_DWP_CORE" "Begin"
@@ -1826,4 +1826,4 @@ HHS_Lock(0);
 // {{{ 2 "LibraryNamespace" "End"
 } // library namespace
 // }} ""
-// $$author=ta16$$valid=0$$time=2026-06-24 15:15$$checksum=4d5eece2$$length=083$$
+// $$author=ta16$$valid=0$$time=2026-07-01 10:44$$checksum=89b09aac$$length=083$$
