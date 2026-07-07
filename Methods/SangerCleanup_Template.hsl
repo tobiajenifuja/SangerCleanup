@@ -1,11 +1,14 @@
-#include "SangerCleanup_Template.res"
-global device ML_STAR ("SangerCleanup_Template.lay", "ML_STAR", hslTrue);
+ namespace _Method { #include "SangerCleanup\\Library\\SangerCleanup_Processes.hs_" } 
+#include "SangerCleanup\\Deck Layouts\\Sanger_BeadCleanup_General_STAR_Template.res"
+ namespace _Method { #include "HSLML_STARLib.hsl" } 
 /* {{ 2 "LibraryInsertLine" "" */ // }} ""
+global device ML_STAR ("SangerCleanup\\Deck Layouts\\Sanger_BeadCleanup_General_STAR_Template.lay", "ML_STAR", hslTrue);
+variable blnIsTwoPlate;
+variable blnSimulationMode;
 /* {{ 2 "VariableInsertLine" "" */ // }} ""
 // {{ 2 "TemplateIncludeBlock" ""
  namespace _Method { #include "HSLMETEDLib.hs_" } 
  namespace _Method { #include "HSLMECCLib.hs_" } 
- namespace _Method { #include "HSLPTLLib.hsl" } 
 // }} ""
 // {{{ 2 "LocalSubmethodInclude" ""
  namespace _Method {  #include __filename__ ".sub"  } 
@@ -17,23 +20,22 @@ namespace _Method { method main(  ) void {
 // {{ 5 "main" "InitLocals"
 // }} ""
 // {{ 2 "AutoInitBlock" ""
-PTL::SetWashingStateDefault("RinseTime1", 5);
-PTL::SetWashingStateDefault("SoakTime1", 5);
-PTL::SetWashingStateDefault("FlowRate1", 11);
-PTL::SetWashingStateDefault("RinseTime2", 0);
-PTL::SetWashingStateDefault("SoakTime2", 0);
-PTL::SetWashingStateDefault("FlowRate2", 11);
-PTL::SetWashingStateDefault("DrainingTime", 10);
-PTL::SetWashingStateDefault("StartWashLiquid", 0);
-PTL::SetLoadingStateDefault("RecoveryOptionContinue", hslTrue);
-PTL::SetLoadingStateDefault("RecoveryOptionExclude", hslTrue);
-PTL::SetLoadingStateDefault("RecoveryOptionDefault", 0);
-PTL::SetLoadingStateDefault("KitLotCheckEnabled", hslFalse);
+SANGERCLEANUP_PROCESSES::_InitLibrary();
 ::RegisterAbortHandler( "OnAbort");
 // }} ""
+// {{ 1 1 0 "95b7a0df_b90b_40dd_b71ab50ff2d9d62b" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+MECC::TraceComment(Translate("******************************************************************************************************************************************************\n                                                            Method Details\n******************************************************************************************************************************************************\nMethod:          Sanger Bead Cleanup Template\nVersion:         0.1 (pre-launch)\nDescription:     TBD\nSoftware:        Venus 4 (v 4.5.0.7977)\nAuthor(s):          Tobi Ajenifuja, Chris Henderson, Kira Nelms\n------------------------------------------------------------------------------------------------------------------------------------------------------"));
+// }} ""
+// {{{ 2 1 0 "e186df28_091f_4ea2_942f54c57155c3ef" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+blnSimulationMode = HSLML_STAR::IsSimulatorMode(ML_STAR);
+// }} ""
+// {{{ 3 1 0 "9162c04a_fe38_4d5c_a1f139b92784cb0b" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
+SANGERCLEANUP_PROCESSES::SYSTEM_Init(ML_STAR, ML_STAR.COREGripTool_OnWaste_1000ul_0001, ML_STAR.NTRTips, ML_STAR.NTREmptyStack, ML_STAR.SourcePlates, ML_STAR.BindPlates, ML_STAR.DestinationPlates, ML_STAR.BindPlatesOnMagnet, ML_STAR.ResBeads, ML_STAR.ResElution, ML_STAR.ResEthanol, ML_STAR.Waste, ML_STAR.HHS, blnSimulationMode, blnIsTwoPlate);
+// }} ""
 // {{ 2 "AutoExitBlock" ""
+SANGERCLEANUP_PROCESSES::_ExitLibrary();
 // }} ""
 // {{{ 5 "main" "End"
 } }
 // }} ""
-// $$author=ta16$$valid=0$$time=2026-06-24 14:43$$checksum=e31cd88b$$length=083$$
+// $$author=ta16$$valid=0$$time=2026-07-07 17:04$$checksum=d42dbefd$$length=083$$

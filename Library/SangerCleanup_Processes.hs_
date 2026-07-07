@@ -1,6 +1,6 @@
 
 // this ALWAYS GENERATED file contains the sub-method library header
-// Generated at 01/07/2026 10:44:15
+// Generated at 07/07/2026 17:04:47
 
 #pragma once
 #ifndef HSL_RUNTIME
@@ -11,10 +11,11 @@ function Abstract(  ) void { }
 function HHS_Heat( variable intTemp ) void { }
 function HHS_Lock( variable blnGripState ) void { }
 function HHS_Shake( variable intSpeed ) void { }
-function PIP_96H_DWPToDWP( device & ML_STAR, sequence & seqDestination, variable intVolume, variable intLiquidType ) void { }
+function PIP_96H_DWPToDWP( device & ML_STAR, sequence & seqSource, sequence & seqDestination, variable fltVolume, variable strLiquid, variable fltAspHeight, variable fltAspMixVolume, variable intAspMixCycles, variable fltAspMixHeight, variable fltDispHeight, variable intDispMixCycles, variable fltDispMixHeight, variable blnTipEject ) void { }
+function PIP_BeadAddition(  ) void { }
 function SYSTEM_Abort( device & ML_STAR ) void { }
 function SYSTEM_Close( device & ML_STAR ) void { }
-function SYSTEM_Init( device & ML_STAR, sequence seqCORE, sequence seq_5mLTipSequence, sequence seq_PBS, sequence seq_Media, sequence seq_TrypLE, sequence seq_Waste, sequence seq_Falcon, variable blnSim ) void { }
+function SYSTEM_Init( device & ML_STAR, sequence seqCORE, sequence seqNTRTips, sequence seqNTREmptyStack, sequence seqSource, sequence seqBind, sequence seqDestination, sequence seqBindOnMag, sequence seqBeads, sequence seqElution, sequence seqEthanol, sequence seqWaste, sequence seqHHS, variable blnSim, variable & blnIsTwoPlate ) void { }
 function TMR_Start( timer & strTimer, variable intTime ) void { }
 function TMR_WaitFor( timer & strTimer, variable & rtnTimerStopped ) void { }
 function TRP_DWP_CORE( sequence seqSource, sequence seqDestination, device & ML_STAR ) void { }
@@ -25,4 +26,4 @@ function TRP_PCR_CORE( sequence seqSource, sequence seqDestination, device & ML_
 #ifdef HSL_RUNTIME
 #include __filename__ ".hsi"
 #endif
-// $$author=ta16$$valid=0$$time=2026-07-01 10:44$$checksum=6b90a5d5$$length=081$$
+// $$author=ta16$$valid=0$$time=2026-07-07 17:04$$checksum=08c52280$$length=081$$
