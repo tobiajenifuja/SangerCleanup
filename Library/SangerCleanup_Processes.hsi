@@ -31,23 +31,23 @@ sequence seq_Source;
 sequence seq_CORE;
 sequence seq_Destination;
 sequence seq_Beads;
-sequence seq_HHS;
 sequence seq_Elution;
 sequence seq_Bind;
 sequence seq_Ethanol;
 sequence seqTips_NTREmptyStack;
+sequence seq_HHS;
 /* {{ 2 "VariableInsertLine" "" */ // }} ""
 // {{{ 2 "SubmethodForwardDeclaration" ""
 function Abstract(  ) void ;
-function DATA_SequenceIncrement( variable blnIsTwoPlate, sequence & seqToIncrement ) void ;
+function DATA_SequenceIncrement( variable blnIsTwoPlate, sequence & io_seqToIncrement ) void ;
 function HHS_Heat( variable intTemp ) void ;
 function HHS_Lock( variable blnGripState ) void ;
 function HHS_Shake( variable intSpeed ) void ;
-function PIP_96H_DWPToDWP( device & ML_STAR, sequence seqSource, sequence & seqDestination, variable fltVolume, variable strLiquidClass, variable fltAspHeight, variable intAspMixCycles, variable fltAspMixVolume, variable fltAspMixHeight, variable fltDispHeight, variable blnTipEject, variable & blnIsTwoPlate ) void ;
+function PIP_96H_DWPToDWP( device & ML_STAR, sequence i_seqSource, sequence i_seqDestination, variable fltVolume, variable strLiquidClass, variable fltAspHeight, variable intAspMixCycles, variable fltAspMixVolume, variable fltAspMixHeight, variable fltDispHeight, variable blnTipEject, variable & blnIsTwoPlate ) void ;
 function PIP_BeadAddition(  ) void ;
 function SYSTEM_Abort( device & ML_STAR ) void ;
 function SYSTEM_Close( device & ML_STAR ) void ;
-function SYSTEM_Init( device & ML_STAR, sequence seqCORE, sequence seqNTRTips, sequence seqNTREmptyStack, sequence & seqSource, sequence & seqBind, sequence & seqDestination, sequence & seqBindOnMag, sequence seqBeads, sequence seqElution, sequence seqEthanol, sequence seqWaste, sequence seqHHS, variable blnSim, variable & blnIsTwoPlate ) void ;
+function SYSTEM_Init( device & ML_STAR, sequence i_seqCORE, sequence i_seqNTRTips, sequence i_seqNTREmptyStack, sequence & io_seqSource, sequence & io_seqBind, sequence & io_seqDestination, sequence & io_seqBindOnMag, sequence i_seqBeads, sequence i_seqElution, sequence i_seqEthanol, sequence i_seqWaste, sequence i_seqHHS, variable blnSim, variable & blnIsTwoPlate ) void ;
 function TMR_Start( timer & strTimer, variable intTime ) void ;
 function TMR_WaitFor( timer & strTimer, variable & rtnTimerStopped ) void ;
 function TRP_DWP_CORE( sequence seqSource, sequence seqDestination, device & ML_STAR ) void ;
@@ -92,52 +92,52 @@ function HHS_Heat( variable intTemp ) void {
 private variable loopCounter1;
 // {{ 5 "HHS_Heat" "InitLocals"
 // }} ""
-// {{ 26 1 0 "cf906a2e_d9d7_48f3_b9dad9a78283d8ee" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 25 1 0 "cf906a2e_d9d7_48f3_b9dad9a78283d8ee" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{{ 27 1 0 "4b4440bd_e815_4c02_ab9dd849152dd160" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 26 1 0 "4b4440bd_e815_4c02_ab9dd849152dd160" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::TraceAction(TRACE_LEVEL_RELEASE, TRACELEVEL::ACTION::START, Translate("SangerCleanup_Processes"), Translate("strMethodName"), Translate("HHS_Heat"));
 // }} ""
-// {{{ 28 1 0 "0b9f49d9_c79a_4a7e_9aefe61da904f091" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 27 1 0 "0b9f49d9_c79a_4a7e_9aefe61da904f091" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::TraceArray(TRACE_LEVEL_RELEASE, Translate(""), arrHHSDevices);
 // }} ""
-// {{ 29 1 0 "adfd0781_6f17_4011_b405d59a13268abe" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 28 1 0 "adfd0781_6f17_4011_b405d59a13268abe" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
 {
 for(loopCounter1 = 0; loopCounter1 < 2;)
 {
 loopCounter1 = loopCounter1 + 1;
 // }} ""
-// {{ 30 1 0 "64016a12_74d5_46e3_9cdfe1fee518b374" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 29 1 0 "64016a12_74d5_46e3_9cdfe1fee518b374" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 if (intTemp != 0)
 {
 // }} ""
-// {{ 31 1 0 "67d6b05d_2969_4e97_836fcbe21b3ba93e" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 30 1 0 "67d6b05d_2969_4e97_836fcbe21b3ba93e" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{{ 32 1 0 "b8c01ff8_e262_4bd0_92df8c89413804da" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 31 1 0 "b8c01ff8_e262_4bd0_92df8c89413804da" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 HSLHamHeaterShaker::StartTempCtrl(arrHHSDevices.ElementAt( loopCounter1 -1), intTemp, 0);
 // }} ""
-// {{{ 33 1 0 "ce10156b_5348_45e8_9e5464ce6c9f9a03" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 32 1 0 "ce10156b_5348_45e8_9e5464ce6c9f9a03" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::Trace_06(TRACE_LEVEL_RELEASE, Translate(">> Started heating HHS_"), loopCounter1, Translate(" to "), intTemp, Translate("C"), Translate(""));
 // }} ""
-// {{ 34 1 0 "64016a12_74d5_46e3_9cdfe1fee518b374" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 33 1 0 "64016a12_74d5_46e3_9cdfe1fee518b374" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 else
 {
 // }} ""
-// {{ 35 1 0 "af2b0d68_8c43_4b30_98cea8011ecfc8a4" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 34 1 0 "af2b0d68_8c43_4b30_98cea8011ecfc8a4" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{{ 36 1 0 "971a067e_6198_4216_8f6cab561f6b6ad6" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 35 1 0 "971a067e_6198_4216_8f6cab561f6b6ad6" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 HSLHamHeaterShaker::StopTempCtrl(arrHHSDevices.ElementAt( loopCounter1 -1));
 // }} ""
-// {{{ 37 1 0 "6ba7e1c5_7a09_4119_9cb3bba612db6e8f" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 36 1 0 "6ba7e1c5_7a09_4119_9cb3bba612db6e8f" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::Trace_06(TRACE_LEVEL_RELEASE, Translate(">> Stopped heating HHS_"), loopCounter1, Translate(""), Translate(""), Translate(""), Translate(""));
 // }} ""
-// {{ 38 1 0 "64016a12_74d5_46e3_9cdfe1fee518b374" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 37 1 0 "64016a12_74d5_46e3_9cdfe1fee518b374" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 // }} ""
-// {{ 39 1 0 "adfd0781_6f17_4011_b405d59a13268abe" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 38 1 0 "adfd0781_6f17_4011_b405d59a13268abe" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
 }
 }
 // }} ""
@@ -150,70 +150,70 @@ function HHS_Shake( variable intSpeed ) void {
 private variable loopCounter1;
 // {{ 5 "HHS_Shake" "InitLocals"
 // }} ""
-// {{ 78 1 0 "76f05b79_5220_4d58_9e468f0ef626a3d7" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 77 1 0 "76f05b79_5220_4d58_9e468f0ef626a3d7" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{{ 79 1 0 "1a786163_09ef_466e_8699a19a4a79196f" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 78 1 0 "1a786163_09ef_466e_8699a19a4a79196f" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::TraceAction(TRACE_LEVEL_RELEASE, TRACELEVEL::ACTION::START, Translate("SangerCleanup_Processes"), Translate("strMethodName"), Translate("HHS_Shake"));
 // }} ""
-// {{ 80 1 0 "86235652_5618_456d_8f17adae6201e9cf" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 79 1 0 "86235652_5618_456d_8f17adae6201e9cf" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
 {
 for(loopCounter1 = 0; loopCounter1 < 2;)
 {
 loopCounter1 = loopCounter1 + 1;
 // }} ""
-// {{ 81 1 0 "db5e7c70_ed29_4a1d_b5688ddb81f3b1ad" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 80 1 0 "db5e7c70_ed29_4a1d_b5688ddb81f3b1ad" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 if (intSpeed != 0)
 {
 // }} ""
-// {{ 82 1 0 "c1077e5c_2c25_4405_b0d0f5062c0160d7" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 81 1 0 "c1077e5c_2c25_4405_b0d0f5062c0160d7" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{{ 83 1 0 "c914db00_1c0d_4103_9663bcba4ab15834" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 82 1 0 "c914db00_1c0d_4103_9663bcba4ab15834" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 HSLHamHeaterShaker::StartShaker(loopCounter1, intSpeed);
 // }} ""
-// {{{ 84 1 0 "468c8ee2_f1e5_4ef5_88b5d78742a2c082" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 83 1 0 "468c8ee2_f1e5_4ef5_88b5d78742a2c082" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::Trace_02(TRACE_LEVEL_RELEASE, Translate(">>> arrHHSDevices: "), arrHHSDevices.ElementAt( loopCounter1 -1));
 // }} ""
-// {{{ 85 1 0 "79029d70_c96f_4da2_9f5f890319d7e071" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 84 1 0 "79029d70_c96f_4da2_9f5f890319d7e071" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::Trace_06(TRACE_LEVEL_RELEASE, Translate("-- Started shaking devHHS_"), loopCounter1, Translate(" at "), intSpeed, Translate("rpm"), Translate(""));
 // }} ""
-// {{ 86 1 0 "db5e7c70_ed29_4a1d_b5688ddb81f3b1ad" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 85 1 0 "db5e7c70_ed29_4a1d_b5688ddb81f3b1ad" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 else
 {
 // }} ""
-// {{ 87 1 0 "6780d565_db11_4e85_9f955c7d03cc5c80" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 86 1 0 "6780d565_db11_4e85_9f955c7d03cc5c80" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{{ 88 1 0 "f2b515a5_179e_4af9_89ef553e46af3831" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 87 1 0 "f2b515a5_179e_4af9_89ef553e46af3831" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 HSLHamHeaterShaker::StopShaker(loopCounter1);
 // }} ""
-// {{{ 89 1 0 "088680f0_c173_4df4_a147f8096c45c4b2" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 88 1 0 "088680f0_c173_4df4_a147f8096c45c4b2" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::Trace_06(TRACE_LEVEL_DEBUG, Translate("-- Stopped shaking HHS_"), loopCounter1, Translate(""), Translate(""), Translate(""), Translate(""));
 // }} ""
-// {{ 90 1 0 "db5e7c70_ed29_4a1d_b5688ddb81f3b1ad" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 89 1 0 "db5e7c70_ed29_4a1d_b5688ddb81f3b1ad" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 // }} ""
-// {{ 91 1 0 "86235652_5618_456d_8f17adae6201e9cf" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 90 1 0 "86235652_5618_456d_8f17adae6201e9cf" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
 }
 }
 // }} ""
-// {{ 92 1 0 "bf4b82bd_c4f0_4d58_b27b9e6d35089e06" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 91 1 0 "bf4b82bd_c4f0_4d58_b27b9e6d35089e06" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 if (blnSimulationMode == 1)
 {
 // }} ""
-// {{{ 93 1 0 "6706bbb4_6bc0_46f8_bd8fa13e3e63aee3" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 92 1 0 "6706bbb4_6bc0_46f8_bd8fa13e3e63aee3" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::Trace_04(TRACE_LEVEL_RELEASE, Translate(">> [SIM] Simulating HHS shake at: "), intSpeed, Translate(" RPM"), Translate(""));
 // }} ""
-// {{ 94 1 0 "bf4b82bd_c4f0_4d58_b27b9e6d35089e06" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 93 1 0 "bf4b82bd_c4f0_4d58_b27b9e6d35089e06" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 // }} ""
 // {{{ 5 "HHS_Shake" "End"
 }
 // }} ""
 // {{{ 5 "SYSTEM_Init" "Begin"
-function SYSTEM_Init( device & ML_STAR, sequence seqCORE, sequence seqNTRTips, sequence seqNTREmptyStack, sequence & seqSource, sequence & seqBind, sequence & seqDestination, sequence & seqBindOnMag, sequence seqBeads, sequence seqElution, sequence seqEthanol, sequence seqWaste, sequence seqHHS, variable blnSim, variable & blnIsTwoPlate ) void {
+function SYSTEM_Init( device & ML_STAR, sequence i_seqCORE, sequence i_seqNTRTips, sequence i_seqNTREmptyStack, sequence & io_seqSource, sequence & io_seqBind, sequence & io_seqDestination, sequence & io_seqBindOnMag, sequence i_seqBeads, sequence i_seqElution, sequence i_seqEthanol, sequence i_seqWaste, sequence i_seqHHS, variable blnSim, variable & blnIsTwoPlate ) void {
 // }} ""
 private variable strHHSDevice;
 private variable loopCounter1;
@@ -232,31 +232,31 @@ blnIsTwoPlate = 0;
 // {{ 379 1 0 "b2405233_fc2e_431e_9c207593a1a71f1a" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{{ 380 1 0 "8cf222c6_8010_43e3_a3e27afab234d342" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 380 1 0 "d8905bcb_fdde_4d1e_adb39c92e1235ac0" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+TRACELEVEL::SetTraceLevel(TRACE_LEVEL_RELEASE);
+// }} ""
+// {{{ 381 1 0 "089955a1_3992_45f5_b11bd067b68fe057" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+TRACELEVEL::SetActionIndicator(TRACELEVEL::ACTION::START, Translate("="));
+// }} ""
+// {{{ 382 1 0 "663d7040_3ba9_4844_8df820ebdc0ffd31" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+TRACELEVEL::SetActionIndicator(TRACELEVEL::ACTION::COMPLETE, Translate("="));
+// }} ""
+// {{{ 383 1 0 "8cf222c6_8010_43e3_a3e27afab234d342" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::TraceAction(TRACE_LEVEL_RELEASE, TRACELEVEL::ACTION::START, Translate("SangerCleanup_Processes"), Translate("strMethodName"), Translate("SYSTEM_Init"));
 // }} ""
-// {{ 381 1 0 "7dbb32a3_866b_4dbb_83873f75d8c1a6f1" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 384 1 0 "11e8ab6f_aa27_4331_898c6128127c0b8f" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 382 1 0 "929f0c68_df3b_4f16_93f199882811d2be" "ML_STAR:{1C0C0CB0-7C87-11D3-AD83-0004ACB1DCB2}"
+// {{ 385 1 0 "929f0c68_df3b_4f16_93f199882811d2be" "ML_STAR:{1C0C0CB0-7C87-11D3-AD83-0004ACB1DCB2}"
 {
 	variable arrRetValues[];
 	arrRetValues = ML_STAR._1C0C0CB0_7C87_11D3_AD83_0004ACB1DCB2("929f0c68_df3b_4f16_93f199882811d2be"); // Initialize
 }
 // }} ""
-// {{ 383 1 0 "70029fbb_b06b_4c12_ac429b76971d59ec" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 386 1 0 "70029fbb_b06b_4c12_ac429b76971d59ec" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
 blnSimulationMode = blnSim;
 // }} ""
-// {{{ 384 1 0 "c82df02b_0182_415f_a9cd3b0cb4cf29a9" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-TRACELEVEL::SetTraceLevel(TRACE_LEVEL_RELEASE);
-// }} ""
-// {{{ 385 1 0 "815e3f9c_6d16_441f_9c78ce354af84542" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-TRACELEVEL::SetActionIndicator(TRACELEVEL::ACTION::START, Translate("="));
-// }} ""
-// {{{ 386 1 0 "4a1dd9de_e1f0_4ac3_bb3b7ee0cf08e2f7" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-TRACELEVEL::SetActionIndicator(TRACELEVEL::ACTION::COMPLETE, Translate("="));
-// }} ""
-// {{ 387 1 0 "517a52c0_63af_4a9b_820045d8e4560414" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 387 1 0 "b6f46ced_e235_4b95_882ff5d7b4e9c91a" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
 // {{ 388 1 0 "b34882b9_8132_485f_85c33b48d073129c" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
@@ -286,299 +286,373 @@ blnIsTwoPlate = 1;
 // {{ 394 1 0 "a476c1ad_b034_47d4_bae82b3020704817" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 // }} ""
-// {{ 395 1 0 "3b2595e1_f8ad_4038_a12720e759153628" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 395 1 0 "a53bc305_4096_49eb_a017eeca77d1b691" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
 // {{ 396 1 0 "68201d44_27db_4dbc_ad8ba88c604a4e17" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 397 1 0 "ac91f394_7425_426a_ad41d28da76722b6" "{4900C1F7-0FB7-4033-8253-760BDB9354DC}"
+// {{ 397 1 0 "c6849a48_cc14_40a9_896cf1f931530aa2" "{586C3429-F931-405f-9938-928E22C90BFA}"
+
+// }} ""
+// {{ 398 1 0 "ac91f394_7425_426a_ad41d28da76722b6" "{4900C1F7-0FB7-4033-8253-760BDB9354DC}"
 arrHHSDevices.SetSize(0);
 // }} ""
-// {{{ 398 1 0 "92c31835_943f_4a6b_b201f60f4438202e" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 399 1 0 "92c31835_943f_4a6b_b201f60f4438202e" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 HSLHamHeaterShaker::SetSimulation(blnSimulationMode);
 // }} ""
-// {{ 399 1 0 "c79c410d_2046_4849_99ed7713048fd85d" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 400 1 0 "c79c410d_2046_4849_99ed7713048fd85d" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
 {
 for(loopCounter1 = 0; loopCounter1 < 1;)
 {
 loopCounter1 = loopCounter1 + 1;
 // }} ""
-// {{{ 400 1 0 "1d01a1cc_d953_4a25_808f6a85a4506347" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 401 1 0 "1d01a1cc_d953_4a25_808f6a85a4506347" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 strHHSDevice = StrConcat2(Translate("devHHS_"), loopCounter1);
 // }} ""
-// {{{ 401 1 0 "47a2f01b_c5a4_4f63_a7157b8f48dc6f5c" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 402 1 0 "2255cf0b_b01f_4dbe_8a49c66e7df3dec1" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 rtnHHS = HSLHamHeaterShaker::CreateUsbDevice(loopCounter1, strHHSDevice);
 // }} ""
-// {{ 402 1 0 "b09e42a0_f5ab_4451_90aea7165d8ff72b" "{F17B7626-27CB-47f1-8477-8C4158339A6D}"
+// {{ 403 1 0 "b09e42a0_f5ab_4451_90aea7165d8ff72b" "{F17B7626-27CB-47f1-8477-8C4158339A6D}"
 arrHHSDevices.AddAsLast(strHHSDevice);
 // }} ""
-// {{ 403 1 0 "cc887ee5_fbf3_4555_b8e3235c000eb75e" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 404 1 0 "cc887ee5_fbf3_4555_b8e3235c000eb75e" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 404 1 0 "b91d8e48_0944_44e5_ab9e51e9e9ee10c3" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 405 1 0 "b91d8e48_0944_44e5_ab9e51e9e9ee10c3" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 if (rtnHHS != 0)
 {
 // }} ""
-// {{ 405 1 0 "76b321cf_ea53_4aa2_a0e79905cea365b5" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 406 1 0 "76b321cf_ea53_4aa2_a0e79905cea365b5" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{{ 406 1 0 "2fa1ec2d_f733_414c_8d823e72b7086b17" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 407 1 0 "2fa1ec2d_f733_414c_8d823e72b7086b17" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::Trace_02(TRACE_LEVEL_RELEASE, Translate("## Error initialising HHS module = "), arrHHSDevices.ElementAt( loopCounter1 -1));
 // }} ""
-// {{ 407 1 0 "b91d8e48_0944_44e5_ab9e51e9e9ee10c3" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 408 1 0 "b91d8e48_0944_44e5_ab9e51e9e9ee10c3" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 // }} ""
-// {{ 408 1 0 "cc887ee5_fbf3_4555_b8e3235c000eb75e" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 409 1 0 "cc887ee5_fbf3_4555_b8e3235c000eb75e" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{{ 409 1 0 "40cb78f2_6310_4c01_8baacd819b6f0d9e" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 410 1 0 "40cb78f2_6310_4c01_8baacd819b6f0d9e" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 HSLHamHeaterShaker::StopAllShaker();
 // }} ""
-// {{ 410 1 0 "c79c410d_2046_4849_99ed7713048fd85d" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 411 1 0 "c79c410d_2046_4849_99ed7713048fd85d" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
 }
 }
 // }} ""
-// {{{ 411 1 0 "01dc66b1_b262_461d_aa6593eac543a9f1" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 412 1 0 "01dc66b1_b262_461d_aa6593eac543a9f1" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::TraceArray(TRACE_LEVEL_RELEASE, Translate(">> Array of HHS modules, arrHHSDevices = "), arrHHSDevices);
 // }} ""
-// {{ 412 1 0 "7d78ba28_8099_42ee_bdb263404f089ca4" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 413 1 0 "c6849a48_cc14_40a9_896cf1f931530aa2" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 413 1 0 "ff192fe4_f0ee_4969_91227ecd32ece9a2" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 414 1 0 "05b4a450_9efa_4eea_b6620544646b09f7" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 414 1 0 "c50c7d39_42c6_470f_85af94f51cfdcd68" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 415 1 0 "ff192fe4_f0ee_4969_91227ecd32ece9a2" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 415 1 0 "c1c15146_d4e6_44d9_a417061bbd3dae1b" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 416 1 0 "4ae0663a_556c_4a09_a4b4db0c0b675299" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 416 1 0 "631655b5_64fd_44f9_8a9f59b295124d8a" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 417 1 0 "5becdecf_1a9b_4c0f_ba90891b3239f1b4" "{586C3429-F931-405f-9938-928E22C90BFA}"
+
+// }} ""
+// {{ 418 1 0 "631655b5_64fd_44f9_8a9f59b295124d8a" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
 intLoopNumber = 96;
 // }} ""
-// {{ 417 1 0 "5f500e36_e6b8_4277_bd7cac19e12af317" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
-index = 1;
-// }} ""
-// {{ 418 1 0 "be3b2931_828f_4fa8_823b265b54e628ac" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
-strLabwareID = Translate("");
-// }} ""
-// {{ 419 1 0 "f7fbc619_5308_4756_b1a8b1ab6baf8cc1" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
-strPositionID = Translate("");
-// }} ""
-// {{ 420 1 0 "c1c15146_d4e6_44d9_a417061bbd3dae1b" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 419 1 0 "5becdecf_1a9b_4c0f_ba90891b3239f1b4" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 421 1 0 "37ed588b_78b1_418d_9c91f1dd503d827e" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 420 1 0 "37ed588b_78b1_418d_9c91f1dd503d827e" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{{ 422 1 0 "d69963f9_00a4_48fb_9c15580b6edd88f4" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 421 1 0 "d69963f9_00a4_48fb_9c15580b6edd88f4" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 SeqRemoveAll(seq_CORE);
 // }} ""
-// {{{ 423 1 0 "50fbdb89_227a_4d1a_940f4b0ce7af5fa0" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-SeqCopySequence(seq_CORE, seqCORE);
+// {{{ 422 1 0 "98910a3f_bc3a_417b_bbbdd35e860f71a4" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqCopySequence(seq_CORE, i_seqCORE);
 // }} ""
-// {{ 424 1 0 "37ed588b_78b1_418d_9c91f1dd503d827e" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 423 1 0 "37ed588b_78b1_418d_9c91f1dd503d827e" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 425 1 0 "bbd1a61a_7eb0_4dbb_b67c5bdab5de2b18" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 424 1 0 "bbd1a61a_7eb0_4dbb_b67c5bdab5de2b18" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{{ 426 1 0 "d930012c_f1dd_4740_9834a7a254fdffec" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 425 1 0 "d930012c_f1dd_4740_9834a7a254fdffec" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 SeqRemoveAll(seqTips_NTR300);
 // }} ""
-// {{{ 427 1 0 "4234febd_bfc0_40d5_9d878b9d3a7e2169" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-SeqCopySequence(seqTips_NTR300, seqNTRTips);
+// {{{ 426 1 0 "b6b6d48f_0ed5_430a_8a28551835ec1f30" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqCopySequence(seqTips_NTR300, i_seqNTRTips);
 // }} ""
-// {{ 428 1 0 "bbd1a61a_7eb0_4dbb_b67c5bdab5de2b18" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 427 1 0 "bbd1a61a_7eb0_4dbb_b67c5bdab5de2b18" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 429 1 0 "de0eacfe_e093_4883_a7418882901c8ed9" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 428 1 0 "de0eacfe_e093_4883_a7418882901c8ed9" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{{ 430 1 0 "e74c824e_52ca_4592_9883ec04dd90b268" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 429 1 0 "e74c824e_52ca_4592_9883ec04dd90b268" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 SeqRemoveAll(seqTips_NTREmptyStack);
 // }} ""
-// {{{ 431 1 0 "71191702_e4e2_4e65_a8c308d127315bb7" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-SeqCopySequence(seqTips_NTREmptyStack, seqNTREmptyStack);
+// {{{ 430 1 0 "fa164578_ef59_4cd6_8dba400c7abd89d0" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqCopySequence(seqTips_NTREmptyStack, i_seqNTREmptyStack);
 // }} ""
-// {{ 432 1 0 "de0eacfe_e093_4883_a7418882901c8ed9" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 431 1 0 "de0eacfe_e093_4883_a7418882901c8ed9" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 433 1 0 "182d0841_a065_44a5_9044d88e8c46e973" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 432 1 0 "182d0841_a065_44a5_9044d88e8c46e973" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{{ 434 1 0 "8a7185f8_7e73_481d_9b6dd77761f92d3d" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 433 1 0 "8a7185f8_7e73_481d_9b6dd77761f92d3d" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 SeqRemoveAll(seq_Beads);
 // }} ""
-// {{{ 435 1 0 "f3f52d04_f0f6_4a5d_b9f497b8f6586b4e" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-SeqCopySequence(seq_Beads, seqBeads);
+// {{{ 434 1 0 "662edb94_d314_40cf_a24a70b52fbf3bdb" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqCopySequence(seq_Beads, i_seqBeads);
 // }} ""
-// {{ 436 1 0 "182d0841_a065_44a5_9044d88e8c46e973" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 435 1 0 "182d0841_a065_44a5_9044d88e8c46e973" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 437 1 0 "8b287dbc_e545_4749_ad50093234c20e55" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 436 1 0 "8b287dbc_e545_4749_ad50093234c20e55" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{{ 438 1 0 "e9799f99_15eb_4a57_9f8f2f866fdf0c1f" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 437 1 0 "e9799f99_15eb_4a57_9f8f2f866fdf0c1f" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 SeqRemoveAll(seq_Elution);
 // }} ""
-// {{{ 439 1 0 "07a43098_2618_4904_b5adc28729756ebf" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-SeqCopySequence(seq_Elution, seqElution);
+// {{{ 438 1 0 "94febf38_c958_4f50_800f1ef06b2e005d" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqCopySequence(seq_Elution, i_seqElution);
 // }} ""
-// {{ 440 1 0 "8b287dbc_e545_4749_ad50093234c20e55" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 439 1 0 "8b287dbc_e545_4749_ad50093234c20e55" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 441 1 0 "1daad016_37e2_446c_897a8e09b3092ebb" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 440 1 0 "1daad016_37e2_446c_897a8e09b3092ebb" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{{ 442 1 0 "f1c38926_8c36_4b4d_93c084465b656612" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 441 1 0 "f1c38926_8c36_4b4d_93c084465b656612" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 SeqRemoveAll(seq_Ethanol);
 // }} ""
-// {{{ 443 1 0 "0a4e363c_e6f0_4249_87c2a24cadee43ee" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-SeqCopySequence(seq_Ethanol, seqEthanol);
+// {{{ 442 1 0 "df37a5d9_de28_443b_ad8aa07a4c1e2a17" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqCopySequence(seq_Ethanol, i_seqEthanol);
 // }} ""
-// {{ 444 1 0 "1daad016_37e2_446c_897a8e09b3092ebb" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 443 1 0 "1daad016_37e2_446c_897a8e09b3092ebb" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 445 1 0 "d134f688_49e6_4c77_a147a1b5be689d6e" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 444 1 0 "d134f688_49e6_4c77_a147a1b5be689d6e" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{{ 446 1 0 "b4ea8672_4f2f_478c_93ba22dea6a77f5c" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 445 1 0 "b4ea8672_4f2f_478c_93ba22dea6a77f5c" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 SeqRemoveAll(seq_Waste);
 // }} ""
-// {{{ 447 1 0 "6c2b8843_13a7_484f_8aabd6e77a6ad3bf" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-SeqCopySequence(seq_Waste, seqWaste);
+// {{{ 446 1 0 "a6435853_fc72_47e1_99e07d4cfa710d14" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqCopySequence(seq_Waste, i_seqWaste);
 // }} ""
-// {{ 448 1 0 "d134f688_49e6_4c77_a147a1b5be689d6e" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 447 1 0 "d134f688_49e6_4c77_a147a1b5be689d6e" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 449 1 0 "3008ccb3_94dd_4d79_8af9a26003429670" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 448 1 0 "3008ccb3_94dd_4d79_8af9a26003429670" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{{ 450 1 0 "a217cd77_25f4_4d9b_a620211331ce07dc" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 449 1 0 "a217cd77_25f4_4d9b_a620211331ce07dc" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 SeqRemoveAll(seq_HHS);
 // }} ""
-// {{{ 451 1 0 "7af0492a_8ce8_4eda_8984198862699e5d" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-SeqCopySequence(seq_HHS, seqHHS);
+// {{{ 450 1 0 "dd7384d2_9f0b_41f4_9f3d299f7183cf9f" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqCopySequence(seq_HHS, i_seqHHS);
 // }} ""
-// {{ 452 1 0 "3008ccb3_94dd_4d79_8af9a26003429670" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 451 1 0 "3008ccb3_94dd_4d79_8af9a26003429670" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 453 1 0 "4c1b32f1_50b0_44f5_ad60fe0155e7edd3" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 452 1 0 "4c1b32f1_50b0_44f5_ad60fe0155e7edd3" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 454 1 0 "f074dc48_ccb7_4e4b_8afe5abc8dc252da" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 453 1 0 "6a16001b_bd6c_4c59_87f601b921b1d754" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 455 1 0 "f9ccf3b6_c1d8_4419_80d7c19b2fac7e9b" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 454 1 0 "1be28711_fd26_4456_adcecf2be91dc7fb" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 if (intPlateNumber == 1)
 {
 // }} ""
-// {{ 456 1 0 "1c855e07_f7d0_498b_857f7743fdcd7ac8" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 455 1 0 "1c855e07_f7d0_498b_857f7743fdcd7ac8" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 457 1 0 "4d6d5598_1387_4e6b_8a553b43c9936108" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 456 1 0 "4d6d5598_1387_4e6b_8a553b43c9936108" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
 {
 for(loopCounter2 = 0; loopCounter2 < intLoopNumber;)
 {
 loopCounter2 = loopCounter2 + 1;
 // }} ""
-// {{{ 458 1 0 "ed2e474d_bb66_405f_9c5c268858e89bce" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-SeqRemoveAt(seqSource, 97);
+// {{{ 457 1 0 "362f5cdf_222e_4ee4_b78a1fcdc80f941a" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqRemoveAt(io_seqSource, 97);
 // }} ""
-// {{ 459 1 0 "4d6d5598_1387_4e6b_8a553b43c9936108" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 458 1 0 "4d6d5598_1387_4e6b_8a553b43c9936108" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
 }
 }
 // }} ""
-// {{{ 460 1 0 "6e46199d_70af_4c05_b373c28da6b64b03" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-SeqResetSequenceIndexes(seqSource);
+// {{{ 459 1 0 "686fcc14_1bc9_4c16_bae19272d82f1eb7" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqResetSequenceIndexes(io_seqSource);
 // }} ""
-// {{{ 461 1 0 "ffcbe4bd_fdf7_480b_9a6578e6082e6457" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-TRACELEVEL::TraceSequenceParameter(TRACE_LEVEL_RELEASE, seqSource);
-// }} ""
-// {{ 462 1 0 "1c855e07_f7d0_498b_857f7743fdcd7ac8" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 460 1 0 "94249cac_8b1c_4388_99e6d08ff88dec59" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 463 1 0 "d3d6fdc0_8e67_4f73_a31ac44f1712cb36" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{{ 461 1 0 "e46eb765_6219_4267_a7f84070bcec912e" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqRemoveAll(seq_Source);
+// }} ""
+// {{{ 462 1 0 "b9daf4d2_b4e3_4cb1_887f710ac32b79a1" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqCopySequence(seq_Source, io_seqSource);
+// }} ""
+// {{{ 463 1 0 "983397d0_04d1_4c9e_ac42a976f2fb004e" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+TRACELEVEL::TraceSequenceParameter(TRACE_LEVEL_RELEASE, seq_Source);
+// }} ""
+// {{ 464 1 0 "1c855e07_f7d0_498b_857f7743fdcd7ac8" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 464 1 0 "9bddd115_3d84_493a_877ffb47a8fe4910" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
-{
-for(loopCounter2 = 0; loopCounter2 < intLoopNumber;)
-{
-loopCounter2 = loopCounter2 + 1;
-// }} ""
-// {{{ 465 1 0 "05f4cc06_5b77_440b_8fe993ed0f85372d" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-SeqRemoveAt(seqBind, 97);
+// {{ 465 1 0 "d3d6fdc0_8e67_4f73_a31ac44f1712cb36" "{586C3429-F931-405f-9938-928E22C90BFA}"
+
 // }} ""
 // {{ 466 1 0 "9bddd115_3d84_493a_877ffb47a8fe4910" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
-}
-}
-// }} ""
-// {{{ 467 1 0 "00b42a51_7ec9_48c7_ab059037786b4e19" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-SeqResetSequenceIndexes(seqBind);
-// }} ""
-// {{{ 468 1 0 "2e112db3_675c_4bd6_85d48aefd71161d0" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-TRACELEVEL::TraceSequenceParameter(TRACE_LEVEL_RELEASE, seqBind);
-// }} ""
-// {{ 469 1 0 "d3d6fdc0_8e67_4f73_a31ac44f1712cb36" "{586C3429-F931-405f-9938-928E22C90BFA}"
-
-// }} ""
-// {{ 470 1 0 "301b627d_d450_49da_88cf71402ce6ec7c" "{586C3429-F931-405f-9938-928E22C90BFA}"
-
-// }} ""
-// {{ 471 1 0 "a7e607ec_e10d_4f8e_ad0163186ba9248c" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
 {
 for(loopCounter2 = 0; loopCounter2 < intLoopNumber;)
 {
 loopCounter2 = loopCounter2 + 1;
 // }} ""
-// {{{ 472 1 0 "1efce717_49bd_43c5_9f39465ee4578347" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-SeqRemoveAt(seqDestination, 97);
+// {{{ 467 1 0 "1c863215_ced6_485b_a223b4a7ee11754e" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqRemoveAt(io_seqBind, 97);
 // }} ""
-// {{ 473 1 0 "a7e607ec_e10d_4f8e_ad0163186ba9248c" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 468 1 0 "9bddd115_3d84_493a_877ffb47a8fe4910" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
 }
 }
 // }} ""
-// {{{ 474 1 0 "6dc3879e_6a51_42ad_8216c577acb7f9cc" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-SeqResetSequenceIndexes(seqDestination);
+// {{{ 469 1 0 "0c2d6f11_7cc0_494c_9c184e68a4e89ef2" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqResetSequenceIndexes(io_seqBind);
 // }} ""
-// {{{ 475 1 0 "d37f5ecb_ab2a_48f4_95238632b5b6bb88" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-TRACELEVEL::TraceSequenceParameter(TRACE_LEVEL_RELEASE, seqDestination);
-// }} ""
-// {{ 476 1 0 "301b627d_d450_49da_88cf71402ce6ec7c" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 470 1 0 "dfa714d4_a57f_4b21_a745e125169e8034" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 477 1 0 "34c32709_906b_4908_93ab912961a49d17" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{{ 471 1 0 "cde64461_4b62_4815_917d0ca73ee9fc64" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqRemoveAll(seq_Bind);
+// }} ""
+// {{{ 472 1 0 "e13e1d78_0d65_473b_97858149fab075cd" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqCopySequence(seq_Bind, io_seqBind);
+// }} ""
+// {{{ 473 1 0 "1df4ffef_2a61_45e1_8fed344414aa9b46" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+TRACELEVEL::TraceSequenceParameter(TRACE_LEVEL_RELEASE, seq_Bind);
+// }} ""
+// {{ 474 1 0 "d3d6fdc0_8e67_4f73_a31ac44f1712cb36" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 478 1 0 "190da27f_1aca_4a46_89143e59426258c1" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 475 1 0 "301b627d_d450_49da_88cf71402ce6ec7c" "{586C3429-F931-405f-9938-928E22C90BFA}"
+
+// }} ""
+// {{ 476 1 0 "a7e607ec_e10d_4f8e_ad0163186ba9248c" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
 {
 for(loopCounter2 = 0; loopCounter2 < intLoopNumber;)
 {
 loopCounter2 = loopCounter2 + 1;
 // }} ""
-// {{{ 479 1 0 "84fe33fd_5b9e_48ec_9b2c49bec50d3de8" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-SeqRemoveAt(seqBindOnMag, 97);
+// {{{ 477 1 0 "14082153_2519_4ddc_8f44c685f455b6ec" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqRemoveAt(io_seqDestination, 97);
 // }} ""
-// {{ 480 1 0 "190da27f_1aca_4a46_89143e59426258c1" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 478 1 0 "a7e607ec_e10d_4f8e_ad0163186ba9248c" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
 }
 }
 // }} ""
-// {{{ 481 1 0 "400159d6_287b_446c_bb42ab805215fb1e" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-SeqResetSequenceIndexes(seqBindOnMag);
+// {{{ 479 1 0 "09b62ca2_d3a9_4261_882d510b6ccecff9" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqResetSequenceIndexes(io_seqDestination);
 // }} ""
-// {{{ 482 1 0 "f196f5fc_c367_46ef_a10429ee59a50fac" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-TRACELEVEL::TraceSequenceParameter(TRACE_LEVEL_RELEASE, seqBindOnMag);
-// }} ""
-// {{ 483 1 0 "34c32709_906b_4908_93ab912961a49d17" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 480 1 0 "9b894255_9aa4_47a7_b019cd6bfa55e187" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 484 1 0 "f9ccf3b6_c1d8_4419_80d7c19b2fac7e9b" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{{ 481 1 0 "c19161a3_ad33_42aa_a0a9bec57f3366db" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqRemoveAll(seq_Destination);
+// }} ""
+// {{{ 482 1 0 "1fd9a6e2_699f_4cbb_9c0a740652355e44" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqCopySequence(seq_Destination, io_seqDestination);
+// }} ""
+// {{{ 483 1 0 "aa288e37_f7a7_415c_92b9f93193ec2815" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+TRACELEVEL::TraceSequenceParameter(TRACE_LEVEL_RELEASE, io_seqDestination);
+// }} ""
+// {{ 484 1 0 "301b627d_d450_49da_88cf71402ce6ec7c" "{586C3429-F931-405f-9938-928E22C90BFA}"
+
+// }} ""
+// {{ 485 1 0 "34c32709_906b_4908_93ab912961a49d17" "{586C3429-F931-405f-9938-928E22C90BFA}"
+
+// }} ""
+// {{ 486 1 0 "190da27f_1aca_4a46_89143e59426258c1" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+{
+for(loopCounter2 = 0; loopCounter2 < intLoopNumber;)
+{
+loopCounter2 = loopCounter2 + 1;
+// }} ""
+// {{{ 487 1 0 "7f4e2ce8_5d95_4945_ac5f9f45c092da08" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqRemoveAt(io_seqBindOnMag, 97);
+// }} ""
+// {{ 488 1 0 "190da27f_1aca_4a46_89143e59426258c1" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+}
 }
 // }} ""
-// {{ 485 1 0 "f074dc48_ccb7_4e4b_8afe5abc8dc252da" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{{ 489 1 0 "7e0164a2_58d1_4242_866e43c130f7b632" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqResetSequenceIndexes(io_seqBindOnMag);
+// }} ""
+// {{ 490 1 0 "19127379_a5f3_47ca_939b08f4dd42f47e" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{{ 491 1 0 "5fae6022_6217_4533_91708ec8d9fe5379" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqRemoveAll(seq_BindOnMag);
+// }} ""
+// {{{ 492 1 0 "157147d7_86ee_403b_b6a25618385a2f66" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqCopySequence(seq_BindOnMag, io_seqBindOnMag);
+// }} ""
+// {{{ 493 1 0 "7e81e6db_1bcc_4a0d_bc02b2b6aa0ce244" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+TRACELEVEL::TraceSequenceParameter(TRACE_LEVEL_RELEASE, io_seqBindOnMag);
+// }} ""
+// {{ 494 1 0 "34c32709_906b_4908_93ab912961a49d17" "{586C3429-F931-405f-9938-928E22C90BFA}"
+
+// }} ""
+// {{ 495 1 0 "1be28711_fd26_4456_adcecf2be91dc7fb" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+}
+else
+{
+// }} ""
+// {{ 496 1 0 "a163809b_9ece_47ae_a5aae793a6cfc535" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{{ 497 1 0 "5173eab6_30b5_4367_87aad8b7a18f1be0" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqRemoveAll(seq_Source);
+// }} ""
+// {{{ 498 1 0 "1fbb90f8_6077_4191_b4a80317dc5faab4" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqCopySequence(seq_Source, io_seqSource);
+// }} ""
+// {{ 499 1 0 "114f25b8_54d7_474e_80f5d9f4f61ca0b7" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{{ 500 1 0 "d3306962_0143_4341_b099457f4e0627d3" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqRemoveAll(seq_Bind);
+// }} ""
+// {{{ 501 1 0 "f3ea6560_0113_448c_b575c4e393f06324" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqCopySequence(seq_Bind, io_seqBind);
+// }} ""
+// {{ 502 1 0 "90c6a633_587e_4639_a7c4f2249c598381" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{{ 503 1 0 "0eafb80c_89e3_411f_91d232b502a2058d" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqRemoveAll(seq_Destination);
+// }} ""
+// {{{ 504 1 0 "b1bf8c1b_2d45_4d32_81adf6011e69e9aa" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqCopySequence(seq_Destination, io_seqDestination);
+// }} ""
+// {{ 505 1 0 "14f9c583_0279_45e3_8bc776a71e5d48a9" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{{ 506 1 0 "3eb4625c_4957_4b4d_98f5adbe56b79a0a" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqRemoveAll(seq_BindOnMag);
+// }} ""
+// {{{ 507 1 0 "7a6f4e97_d7a1_4082_8c9a13bce3e61dff" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqCopySequence(seq_BindOnMag, io_seqBindOnMag);
+// }} ""
+// {{ 508 1 0 "1be28711_fd26_4456_adcecf2be91dc7fb" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+}
+// }} ""
+// {{ 509 1 0 "6a16001b_bd6c_4c59_87f601b921b1d754" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
 // {{{ 5 "SYSTEM_Init" "End"
@@ -589,32 +663,32 @@ function TMR_Start( timer & strTimer, variable intTime ) void {
 // }} ""
 // {{ 5 "TMR_Start" "InitLocals"
 // }} ""
-// {{ 487 1 0 "f36d4ffc_7c89_4408_953a3d938512441f" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 511 1 0 "f36d4ffc_7c89_4408_953a3d938512441f" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{{ 488 1 0 "71ec73ed_2cc9_431d_8a746721024935c0" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 512 1 0 "71ec73ed_2cc9_431d_8a746721024935c0" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::TraceAction(TRACE_LEVEL_RELEASE, TRACELEVEL::ACTION::START, Translate("SangerCleanup_Processes"), Translate("strMethodName"), Translate("TMR_Start"));
 // }} ""
-// {{ 489 1 0 "01056c43_6ffa_4f56_92d41469034529f2" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 513 1 0 "01056c43_6ffa_4f56_92d41469034529f2" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 if (blnSimulationMode == 1)
 {
 // }} ""
-// {{{ 490 1 0 "2403196c_c2d6_409a_805442106736c2e9" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 514 1 0 "2403196c_c2d6_409a_805442106736c2e9" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::Trace_02(TRACE_LEVEL_RELEASE, Translate(">> Instrument in simulation. Shortening timer."), Translate(""));
 // }} ""
-// {{ 491 1 0 "3443f175_a0c8_4f99_a19beae805ff7228" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 515 1 0 "3443f175_a0c8_4f99_a19beae805ff7228" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
 intTime = 3;
 // }} ""
-// {{ 492 1 0 "01056c43_6ffa_4f56_92d41469034529f2" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 516 1 0 "01056c43_6ffa_4f56_92d41469034529f2" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 // }} ""
-// {{ 493 1 0 "5f2cc529_6805_42c4_81d5cca973694d1b" "{B31F353E-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 517 1 0 "5f2cc529_6805_42c4_81d5cca973694d1b" "{B31F353E-5D80-11d4-A5EB-0050DA737D89}"
 if( 0 == strTimer.SetTimer(intTime) )
 {
     MECC::RaiseRuntimeErrorEx(-1355939584, MECC::IDS::stepNameTimerStart, MECC::IDS::errorStepFailed, "", "HxMetEdCompCmd");
 }
 // }} ""
-// {{{ 494 1 0 "fdb56ca1_19d8_48b7_b6a5374fde678378" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 518 1 0 "fdb56ca1_19d8_48b7_b6a5374fde678378" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::Trace_04(TRACE_LEVEL_RELEASE, Translate(">> Started new timer for: "), intTime, Translate(" seconds"), Translate(""));
 // }} ""
 // {{{ 5 "TMR_Start" "End"
@@ -626,26 +700,26 @@ function TMR_WaitFor( timer & strTimer, variable & rtnTimerStopped ) void {
 // {{ 5 "TMR_WaitFor" "InitLocals"
 rtnTimerStopped = 0;
 // }} ""
-// {{ 496 1 0 "f1c3e977_c4ce_429b_931407d00d0ed200" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 520 1 0 "f1c3e977_c4ce_429b_931407d00d0ed200" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{{ 497 1 0 "2ea406f8_73f8_4dae_893cdf812cd2e09b" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 521 1 0 "2ea406f8_73f8_4dae_893cdf812cd2e09b" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::TraceAction(TRACE_LEVEL_RELEASE, TRACELEVEL::ACTION::START, Translate("SangerCleanup_Processes"), Translate("strMethodName"), Translate("TMR_WaitFor"));
 // }} ""
-// {{{ 498 1 0 "a63b8e9d_8329_4b64_b854dbade6220ba2" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 522 1 0 "a63b8e9d_8329_4b64_b854dbade6220ba2" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::Trace_02(TRACE_LEVEL_RELEASE, Translate(">> Waiting for timer to complete..."), Translate(""));
 // }} ""
-// {{ 499 1 0 "5ffbf008_2bbd_4edb_88a1d37540efe89a" "{B31F353F-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 523 1 0 "5ffbf008_2bbd_4edb_88a1d37540efe89a" "{B31F353F-5D80-11d4-A5EB-0050DA737D89}"
 rtnTimerStopped = strTimer.WaitTimer(hslTrue, hslTrue);
 if (0 == rtnTimerStopped)
 {
     MECC::RaiseRuntimeErrorEx(-1339162368, MECC::IDS::stepNameTimerWait, MECC::IDS::errorStepFailed, "", "HxMetEdCompCmd");
 }
 // }} ""
-// {{ 500 1 0 "42f207f7_ea4a_4097_a86ad8c299441737" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 524 1 0 "42f207f7_ea4a_4097_a86ad8c299441737" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{{ 501 1 0 "5aae7e41_d96c_4496_918e6241518226f3" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 525 1 0 "5aae7e41_d96c_4496_918e6241518226f3" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::Trace_02(TRACE_LEVEL_RELEASE, Translate(">> Timer complete."), Translate(""));
 // }} ""
 // {{{ 5 "TMR_WaitFor" "End"
@@ -1007,122 +1081,122 @@ private variable loopCounter1;
 private variable rtn;
 // {{ 5 "HHS_Lock" "InitLocals"
 // }} ""
-// {{ 41 1 0 "82a2092a_4048_484e_98f3ac4a5cc65c5d" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 40 1 0 "82a2092a_4048_484e_98f3ac4a5cc65c5d" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{{ 42 1 0 "22d1fbce_6177_43db_b1482fb43f4b0a4d" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 41 1 0 "22d1fbce_6177_43db_b1482fb43f4b0a4d" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::Trace_02(TRACE_LEVEL_RELEASE, Translate(">> Locking HHS..."), Translate(""));
 // }} ""
-// {{ 43 1 0 "f18ab5fd_e0ed_45de_a7d67503636f80d4" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 42 1 0 "f18ab5fd_e0ed_45de_a7d67503636f80d4" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 44 1 0 "96017a66_7a98_4e1a_8df52edb518ffde0" "{72EACF88-8D49-43e3-92C8-2F90E81E3260}"
+// {{ 43 1 0 "96017a66_7a98_4e1a_8df52edb518ffde0" "{72EACF88-8D49-43e3-92C8-2F90E81E3260}"
 intModuleCount=arrHHSDevices.GetSize();
 // }} ""
-// {{ 45 1 0 "80e1ab10_93f2_49d3_9f67220d6feb4c09" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 44 1 0 "80e1ab10_93f2_49d3_9f67220d6feb4c09" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 46 1 0 "f58d1789_f5f8_464d_b3ca1377bfa7d0df" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 45 1 0 "f58d1789_f5f8_464d_b3ca1377bfa7d0df" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
 {
 for(loopCounter1 = 0; loopCounter1 < intModuleCount;)
 {
 loopCounter1 = loopCounter1 + 1;
 // }} ""
-// {{ 47 1 0 "7549653d_e788_49a8_bc6b3f527f338253" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 46 1 0 "7549653d_e788_49a8_bc6b3f527f338253" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 if (blnGripState == 1)
 {
 // }} ""
-// {{ 48 1 0 "79256671_755f_4d8c_a3c7b170d07fbb2b" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 47 1 0 "79256671_755f_4d8c_a3c7b170d07fbb2b" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 49 1 0 "e937926a_76d8_4a97_9cdad187ef8eeb7e" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 48 1 0 "e937926a_76d8_4a97_9cdad187ef8eeb7e" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 if (blnSimulationMode == 0)
 {
 // }} ""
-// {{{ 50 1 0 "46832eb0_23dd_466e_b4f01984faafebd6" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 49 1 0 "46832eb0_23dd_466e_b4f01984faafebd6" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 rtn = HSLHamHeaterShaker::SetPlateLock(arrHHSDevices.ElementAt( loopCounter1 -1), 0);
 // }} ""
-// {{ 51 1 0 "bcccee1f_76d2_477e_91418b210f81b9c6" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 50 1 0 "bcccee1f_76d2_477e_91418b210f81b9c6" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 52 1 0 "81b86f3d_2cf4_463c_8c20c3719900ab29" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 51 1 0 "81b86f3d_2cf4_463c_8c20c3719900ab29" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 if (rtn != 0)
 {
 // }} ""
-// {{ 53 1 0 "7706f95a_04d3_429a_8740fc79a5ec7832" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 52 1 0 "7706f95a_04d3_429a_8740fc79a5ec7832" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{{ 54 1 0 "6aadcbc5_8bbc_4e7e_a587c2811a767080" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 53 1 0 "6aadcbc5_8bbc_4e7e_a587c2811a767080" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::Trace_02(TRACE_LEVEL_RELEASE, Translate("## Error opening HHS = "), arrTiltModules.ElementAt( loopCounter1 -1));
 // }} ""
-// {{ 55 1 0 "81b86f3d_2cf4_463c_8c20c3719900ab29" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 54 1 0 "81b86f3d_2cf4_463c_8c20c3719900ab29" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 // }} ""
-// {{ 56 1 0 "bcccee1f_76d2_477e_91418b210f81b9c6" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 55 1 0 "bcccee1f_76d2_477e_91418b210f81b9c6" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 57 1 0 "e937926a_76d8_4a97_9cdad187ef8eeb7e" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 56 1 0 "e937926a_76d8_4a97_9cdad187ef8eeb7e" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 else
 {
 // }} ""
-// {{ 58 1 0 "60a666e3_7de1_4f00_81b5193bf1617773" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 57 1 0 "60a666e3_7de1_4f00_81b5193bf1617773" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
 Trace(">> [SIM] Hamilton HHS ", arrHHSDevices[loopCounter1-1], ": Open;");
-// {{ 60 1 0 "e937926a_76d8_4a97_9cdad187ef8eeb7e" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 59 1 0 "e937926a_76d8_4a97_9cdad187ef8eeb7e" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 // }} ""
-// {{ 61 1 0 "7549653d_e788_49a8_bc6b3f527f338253" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 60 1 0 "7549653d_e788_49a8_bc6b3f527f338253" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 else
 {
 // }} ""
-// {{ 62 1 0 "fe9b2b91_2c7c_4df5_8fa8e01d2ced6ac4" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 61 1 0 "fe9b2b91_2c7c_4df5_8fa8e01d2ced6ac4" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 63 1 0 "074d1a25_35d3_4015_9307fcb8dad31be4" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 62 1 0 "074d1a25_35d3_4015_9307fcb8dad31be4" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 if (blnSimulationMode == 0)
 {
 // }} ""
-// {{{ 64 1 0 "6561e5ee_3908_4507_91f04f3a120ed5be" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 63 1 0 "6561e5ee_3908_4507_91f04f3a120ed5be" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 rtn = HSLHamHeaterShaker::SetPlateLock(arrHHSDevices.ElementAt( loopCounter1 -1), 1);
 // }} ""
-// {{ 65 1 0 "8cc11e55_33d5_4eb2_8141f5612dbcb7fc" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 64 1 0 "8cc11e55_33d5_4eb2_8141f5612dbcb7fc" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 66 1 0 "337b3aef_3b5c_45ec_be85593dbf227c43" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 65 1 0 "337b3aef_3b5c_45ec_be85593dbf227c43" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 if (rtn != 0)
 {
 // }} ""
-// {{ 67 1 0 "5ca91207_3f83_49ae_a66345ae23dc8417" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 66 1 0 "5ca91207_3f83_49ae_a66345ae23dc8417" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{{ 68 1 0 "2edf0af3_8977_4b80_ab1d83e41b34cee1" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 67 1 0 "2edf0af3_8977_4b80_ab1d83e41b34cee1" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::Trace_02(TRACE_LEVEL_RELEASE, Translate("## Error closing HHS = "), arrTiltModules.ElementAt( loopCounter1 -1));
 // }} ""
-// {{ 69 1 0 "337b3aef_3b5c_45ec_be85593dbf227c43" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 68 1 0 "337b3aef_3b5c_45ec_be85593dbf227c43" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 // }} ""
-// {{ 70 1 0 "8cc11e55_33d5_4eb2_8141f5612dbcb7fc" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 69 1 0 "8cc11e55_33d5_4eb2_8141f5612dbcb7fc" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 71 1 0 "074d1a25_35d3_4015_9307fcb8dad31be4" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 70 1 0 "074d1a25_35d3_4015_9307fcb8dad31be4" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 else
 {
 // }} ""
-// {{ 72 1 0 "b2b34e9c_143a_4e51_8d352182c4d009c5" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 71 1 0 "b2b34e9c_143a_4e51_8d352182c4d009c5" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
 Trace(">> [SIM] Hamilton HHS ", arrHHSDevices[loopCounter1-1], ": Close;");
-// {{ 74 1 0 "074d1a25_35d3_4015_9307fcb8dad31be4" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 73 1 0 "074d1a25_35d3_4015_9307fcb8dad31be4" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 // }} ""
-// {{ 75 1 0 "7549653d_e788_49a8_bc6b3f527f338253" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 74 1 0 "7549653d_e788_49a8_bc6b3f527f338253" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 // }} ""
-// {{ 76 1 0 "f58d1789_f5f8_464d_b3ca1377bfa7d0df" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 75 1 0 "f58d1789_f5f8_464d_b3ca1377bfa7d0df" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
 }
 }
 // }} ""
@@ -1140,43 +1214,43 @@ private variable intGripHeight;
 private variable intNumberOfTransports;
 // {{ 5 "TRP_DWP_CORE" "InitLocals"
 // }} ""
-// {{ 503 1 0 "6940fd54_da48_4fef_b9a7dc898cfa7d37" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 527 1 0 "6940fd54_da48_4fef_b9a7dc898cfa7d37" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{{ 504 1 0 "31b9d1f9_4e4b_44bc_89c903a1aa860510" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 528 1 0 "31b9d1f9_4e4b_44bc_89c903a1aa860510" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::TraceAction(TRACE_LEVEL_RELEASE, TRACELEVEL::ACTION::START, Translate("SangerCleanup_Processes"), Translate("strMethodName"), Translate("TRP_DWP_CORE"));
 // }} ""
-// {{ 505 1 0 "0709ae4a_b020_46c3_81289935c4c89d6c" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 529 1 0 "0709ae4a_b020_46c3_81289935c4c89d6c" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 506 1 0 "d57a088d_ba3e_4141_9cd50c95c8f47b5d" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 530 1 0 "d57a088d_ba3e_4141_9cd50c95c8f47b5d" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 507 1 0 "b7984289_7783_4007_820efd595fd0c817" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 531 1 0 "b7984289_7783_4007_820efd595fd0c817" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
 intEjectTool = 0;
 // }} ""
-// {{ 508 1 0 "7aad807b_8915_4e89_aa0817828bae7b0f" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 532 1 0 "7aad807b_8915_4e89_aa0817828bae7b0f" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
 intGripWidth = 80;
 // }} ""
-// {{ 509 1 0 "7b391d30_74af_4b10_9005110cffa61bb4" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 533 1 0 "7b391d30_74af_4b10_9005110cffa61bb4" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
 intGripHeight = 8.5;
 // }} ""
-// {{ 510 1 0 "9974909f_33cd_4413_802306bd20628e24" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 534 1 0 "9974909f_33cd_4413_802306bd20628e24" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
 intGripWidthOpen = 87;
 // }} ""
-// {{{ 511 1 0 "e1b85b5a_0163_49f5_96edba4a9059353b" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 535 1 0 "e1b85b5a_0163_49f5_96edba4a9059353b" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 intNumberOfTransports = SeqGetTotal(seqSource);
 // }} ""
-// {{ 512 1 0 "db8e17ad_75d7_43b5_8db9c209d0c6daee" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 536 1 0 "db8e17ad_75d7_43b5_8db9c209d0c6daee" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{{ 513 1 0 "6b982071_7400_4c0e_8630543323889a23" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
+// {{{ 537 1 0 "6b982071_7400_4c0e_8630543323889a23" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
 HHS_Lock(1);
 // }} ""
-// {{ 514 1 0 "2902f560_cd7b_43d8_ab742f8ec17cad26" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 538 1 0 "2902f560_cd7b_43d8_ab742f8ec17cad26" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 515 1 0 "d14e941d_289f_4d4a_bd5d8d3990d5793f" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 539 1 0 "d14e941d_289f_4d4a_bd5d8d3990d5793f" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
 {
 loopCounter1 = 0;
 while (
@@ -1186,35 +1260,35 @@ while (
 AlignSequences(hslTrue, seqSource, 1);
 loopCounter1 = loopCounter1 + 1;
 // }} ""
-// {{{ 516 1 0 "2c319cac_f710_4d85_a846b2b1745a2446" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 540 1 0 "2c319cac_f710_4d85_a846b2b1745a2446" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::Trace_04(TRACE_LEVEL_RELEASE, Translate(">> Transport loop: "), loopCounter1, Translate("/"), intNumberOfTransports);
 // }} ""
-// {{ 517 1 0 "8ee74b79_6400_4b8f_a05d42544232f6b4" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 541 1 0 "8ee74b79_6400_4b8f_a05d42544232f6b4" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 518 1 0 "f8da1d3b_e8cc_4ac8_b1c9d16d37bedf70" "ML_STAR:{A108628C-BEB7-4CB6-99FD-8523302C700F}"
+// {{ 542 1 0 "f8da1d3b_e8cc_4ac8_b1c9d16d37bedf70" "ML_STAR:{A108628C-BEB7-4CB6-99FD-8523302C700F}"
 {
 	variable arrRetValues[];
 	arrRetValues = ML_STAR._A108628C_BEB7_4CB6_99FD_8523302C700F("f8da1d3b_e8cc_4ac8_b1c9d16d37bedf70"); // ZSwapGetPlate
 }
 // }} ""
-// {{ 519 1 0 "6964fec9_ff9f_4d80_b3bc2c70849fd953" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 543 1 0 "6964fec9_ff9f_4d80_b3bc2c70849fd953" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 if (loopCounter1 == intNumberOfTransports)
 {
 // }} ""
-// {{ 520 1 0 "c9d6cec9_b4c4_41a4_9f3cc63b5e8de965" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 544 1 0 "c9d6cec9_b4c4_41a4_9f3cc63b5e8de965" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
 intEjectTool = 1;
 // }} ""
-// {{ 521 1 0 "6964fec9_ff9f_4d80_b3bc2c70849fd953" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 545 1 0 "6964fec9_ff9f_4d80_b3bc2c70849fd953" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 // }} ""
-// {{ 522 1 0 "7b3b985a_07e5_4b40_98fd9201a9aa6ead" "ML_STAR:{9DF3DD4B-3B5E-4750-8989-04458D1B134B}"
+// {{ 546 1 0 "7b3b985a_07e5_4b40_98fd9201a9aa6ead" "ML_STAR:{9DF3DD4B-3B5E-4750-8989-04458D1B134B}"
 {
 	variable arrRetValues[];
 	arrRetValues = ML_STAR._9DF3DD4B_3B5E_4750_8989_04458D1B134B("7b3b985a_07e5_4b40_98fd9201a9aa6ead"); // ZSwapPlacePlate
 }
 // }} ""
-// {{ 523 1 0 "d14e941d_289f_4d4a_bd5d8d3990d5793f" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 547 1 0 "d14e941d_289f_4d4a_bd5d8d3990d5793f" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
 if (
    (seqSource.GetCurrentPosition() > 0 && seqSource.GetMax() == 0 )
 )
@@ -1225,10 +1299,10 @@ seqSource.SetMax(seqSource.GetTotal());
 seqSource.SetCurrentPosition(1);
 }
 // }} ""
-// {{ 524 1 0 "0d8b4cd3_5064_4e0e_896efb1b1323fe50" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 548 1 0 "0d8b4cd3_5064_4e0e_896efb1b1323fe50" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{{ 525 1 0 "550ff806_c30b_4fea_a90adaef189c806c" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
+// {{{ 549 1 0 "550ff806_c30b_4fea_a90adaef189c806c" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
 HHS_Lock(0);
 // }} ""
 // {{{ 5 "TRP_DWP_CORE" "End"
@@ -1245,43 +1319,43 @@ private variable intGripHeight;
 private variable intNumberOfTransports;
 // {{ 5 "TRP_PCR_CORE" "InitLocals"
 // }} ""
-// {{ 527 1 0 "e7d12673_0c98_415c_8f44ef8188b56a11" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 551 1 0 "e7d12673_0c98_415c_8f44ef8188b56a11" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{{ 528 1 0 "4840e14c_1709_4bae_b455601ca5f676f7" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 552 1 0 "4840e14c_1709_4bae_b455601ca5f676f7" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::TraceAction(TRACE_LEVEL_RELEASE, TRACELEVEL::ACTION::START, Translate("SangerCleanup_Processes"), Translate("strMethodName"), Translate("TRP_PCR_CORE"));
 // }} ""
-// {{ 529 1 0 "1cbfa790_d56c_4ba8_8627cd1c75bf8617" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 553 1 0 "1cbfa790_d56c_4ba8_8627cd1c75bf8617" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 530 1 0 "93751e83_2f8e_477f_924cbd4985903a54" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 554 1 0 "93751e83_2f8e_477f_924cbd4985903a54" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 531 1 0 "8fc70e14_32bd_4623_9bbf34eaf644d206" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 555 1 0 "8fc70e14_32bd_4623_9bbf34eaf644d206" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
 intEjectTool = 0;
 // }} ""
-// {{ 532 1 0 "30e313f5_8c67_403d_a3437464ac824f76" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 556 1 0 "30e313f5_8c67_403d_a3437464ac824f76" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
 intGripWidth = 80;
 // }} ""
-// {{ 533 1 0 "91eb7d3c_87c0_4f33_ba592e762ff10bf1" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 557 1 0 "91eb7d3c_87c0_4f33_ba592e762ff10bf1" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
 intGripHeight = 8.5;
 // }} ""
-// {{ 534 1 0 "0d80d7b0_645f_4372_aa789829ee1cc1cc" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 558 1 0 "0d80d7b0_645f_4372_aa789829ee1cc1cc" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
 intGripWidthOpen = 87;
 // }} ""
-// {{{ 535 1 0 "fc9ad82c_d05e_477a_be0a812ffb38f800" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 559 1 0 "fc9ad82c_d05e_477a_be0a812ffb38f800" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 intNumberOfTransports = SeqGetTotal(seqSource);
 // }} ""
-// {{ 536 1 0 "ba879f25_87af_4905_8fc585cbff653830" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 560 1 0 "ba879f25_87af_4905_8fc585cbff653830" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{{ 537 1 0 "7c046d47_1bab_4a73_9a654703d5e3f8c1" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
+// {{{ 561 1 0 "7c046d47_1bab_4a73_9a654703d5e3f8c1" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
 HHS_Lock(1);
 // }} ""
-// {{ 538 1 0 "39b50581_b161_4576_a40081d49e3d5535" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 562 1 0 "39b50581_b161_4576_a40081d49e3d5535" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 539 1 0 "b28e87f6_9707_480e_bd4f584e41e73248" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 563 1 0 "b28e87f6_9707_480e_bd4f584e41e73248" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
 {
 loopCounter1 = 0;
 while (
@@ -1291,35 +1365,35 @@ while (
 AlignSequences(hslTrue, seqSource, 1);
 loopCounter1 = loopCounter1 + 1;
 // }} ""
-// {{{ 540 1 0 "3fdfdbd0_eb72_4d09_ae0dfe2290f4ec97" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 564 1 0 "3fdfdbd0_eb72_4d09_ae0dfe2290f4ec97" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::Trace_04(TRACE_LEVEL_RELEASE, Translate(">> Transport loop: "), loopCounter1, Translate("/"), intNumberOfTransports);
 // }} ""
-// {{ 541 1 0 "657d2ef5_c249_4433_bfc0bf0658fc126d" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 565 1 0 "657d2ef5_c249_4433_bfc0bf0658fc126d" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 542 1 0 "3cf1b483_b308_4799_9a3c05b9bdebe6f4" "ML_STAR:{A108628C-BEB7-4CB6-99FD-8523302C700F}"
+// {{ 566 1 0 "3cf1b483_b308_4799_9a3c05b9bdebe6f4" "ML_STAR:{A108628C-BEB7-4CB6-99FD-8523302C700F}"
 {
 	variable arrRetValues[];
 	arrRetValues = ML_STAR._A108628C_BEB7_4CB6_99FD_8523302C700F("3cf1b483_b308_4799_9a3c05b9bdebe6f4"); // ZSwapGetPlate
 }
 // }} ""
-// {{ 543 1 0 "a97011cd_3abd_48cf_bd23a285551ae4f3" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 567 1 0 "a97011cd_3abd_48cf_bd23a285551ae4f3" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 if (loopCounter1 == intNumberOfTransports)
 {
 // }} ""
-// {{ 544 1 0 "ce1183dd_0c9c_4602_8fb8d56932ff406b" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 568 1 0 "ce1183dd_0c9c_4602_8fb8d56932ff406b" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
 intEjectTool = 1;
 // }} ""
-// {{ 545 1 0 "a97011cd_3abd_48cf_bd23a285551ae4f3" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 569 1 0 "a97011cd_3abd_48cf_bd23a285551ae4f3" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 // }} ""
-// {{ 546 1 0 "eed361ef_2dd4_4646_b2ffddbc8c2d371f" "ML_STAR:{9DF3DD4B-3B5E-4750-8989-04458D1B134B}"
+// {{ 570 1 0 "eed361ef_2dd4_4646_b2ffddbc8c2d371f" "ML_STAR:{9DF3DD4B-3B5E-4750-8989-04458D1B134B}"
 {
 	variable arrRetValues[];
 	arrRetValues = ML_STAR._9DF3DD4B_3B5E_4750_8989_04458D1B134B("eed361ef_2dd4_4646_b2ffddbc8c2d371f"); // ZSwapPlacePlate
 }
 // }} ""
-// {{ 547 1 0 "b28e87f6_9707_480e_bd4f584e41e73248" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 571 1 0 "b28e87f6_9707_480e_bd4f584e41e73248" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
 if (
    (seqSource.GetCurrentPosition() > 0 && seqSource.GetMax() == 0 )
 )
@@ -1330,10 +1404,10 @@ seqSource.SetMax(seqSource.GetTotal());
 seqSource.SetCurrentPosition(1);
 }
 // }} ""
-// {{ 548 1 0 "931bd4be_ed28_4890_a6f0143924f1a221" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 572 1 0 "931bd4be_ed28_4890_a6f0143924f1a221" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{{ 549 1 0 "ef07fc41_2f33_496c_b466a1926aebcac1" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
+// {{{ 573 1 0 "ef07fc41_2f33_496c_b466a1926aebcac1" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
 HHS_Lock(0);
 // }} ""
 // {{{ 5 "TRP_PCR_CORE" "End"
@@ -1348,7 +1422,7 @@ function PIP_BeadAddition(  ) void {
 }
 // }} ""
 // {{{ 5 "PIP_96H_DWPToDWP" "Begin"
-function PIP_96H_DWPToDWP( device & ML_STAR, sequence seqSource, sequence & seqDestination, variable fltVolume, variable strLiquidClass, variable fltAspHeight, variable intAspMixCycles, variable fltAspMixVolume, variable fltAspMixHeight, variable fltDispHeight, variable blnTipEject, variable & blnIsTwoPlate ) void {
+function PIP_96H_DWPToDWP( device & ML_STAR, sequence i_seqSource, sequence i_seqDestination, variable fltVolume, variable strLiquidClass, variable fltAspHeight, variable intAspMixCycles, variable fltAspMixVolume, variable fltAspMixHeight, variable fltDispHeight, variable blnTipEject, variable & blnIsTwoPlate ) void {
 // }} ""
 private dialog customDialogD430741CA9FD460eA8303DAFBE7C0A41;
 private dialog customDialogC0C1EB6E1993416dACEF2A944242BC7B;
@@ -1375,10 +1449,13 @@ private dialog customDialogAF5572B93C8A4750A5DD6D18C47425A3;
 private dialog customDialog43CA3F663F384a07AFF216F972A076AD;
 // {{ 5 "PIP_96H_DWPToDWP" "InitLocals"
 // }} ""
-// {{ 96 1 0 "2009dfcb_6f44_4f7c_b341c6def0191f3f" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 95 1 0 "2009dfcb_6f44_4f7c_b341c6def0191f3f" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 97 1 0 "63ea2597_8251_404f_aab6742db906736d" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 96 1 0 "939f275e_44e6_48cd_87fe8112285b36eb" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{ 97 1 0 "816feeba_fb24_4ff4_82604628fbeec2cc" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
 // {{{ 98 1 0 "ba335074_80df_4fe2_bdb1d6125d2277f0" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
@@ -1390,11 +1467,11 @@ TRACELEVEL::TraceAction(TRACE_LEVEL_RELEASE, TRACELEVEL::ACTION::START, Translat
 // {{ 100 1 0 "67bc2372_16ba_4a30_833ec07d0c7622f4" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{{ 101 1 0 "5ee0ecd9_960b_42d3_bd31db3c6add559d" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-TRACELEVEL::TraceSequenceParameter(TRACE_LEVEL_RELEASE, seqSource);
+// {{{ 101 1 0 "3b052111_5165_4c73_a6b41a40c1965c48" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+TRACELEVEL::TraceSequenceParameter(TRACE_LEVEL_RELEASE, i_seqSource);
 // }} ""
-// {{{ 102 1 0 "a7785c51_04bd_403f_804655a4521ae74b" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-TRACELEVEL::TraceSequenceParameter(TRACE_LEVEL_RELEASE, seqDestination);
+// {{{ 102 1 0 "9bacdd86_d21e_429c_9ce8107285c886c1" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+TRACELEVEL::TraceSequenceParameter(TRACE_LEVEL_RELEASE, i_seqDestination);
 // }} ""
 // {{{ 103 1 0 "92a1db77_bbe3_4699_b954ae13304c86ad" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::Trace_02(TRACE_LEVEL_RELEASE, Translate("===== fltVolume = "), fltVolume);
@@ -1459,7 +1536,7 @@ arrApprovedLQC.AddAsLast(Translate("DNAP_Tip_300ul_96COREHead_Supernatant_Remova
 // {{ 123 1 0 "2d415729_7fd9_4191_8db90b7a0901371c" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 124 1 0 "6de54970_af91_43aa_ac3cbe6ebf549128" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 124 1 0 "f316b19e_592d_4e9c_9392122076253d68" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
 // {{ 125 1 0 "fd7a0cfd_4570_4e31_b30e8db415a96eac" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
@@ -1471,7 +1548,7 @@ fltVolumeMin = 5;
 // {{ 127 1 0 "8260392d_8189_4c22_b4187ef9669da327" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
 intMixCycleMax = 99;
 // }} ""
-// {{ 128 1 0 "4701e320_157a_4df5_8917b1e79c07ce57" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 128 1 0 "31d42cc9_ae3b_4c91_92d79aa8fde09325" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
 // {{ 129 1 0 "0490e017_1cf1_4ba4_beb3853f6acce29c" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
@@ -1581,14 +1658,14 @@ TRACELEVEL::Trace_02(TRACE_LEVEL_RELEASE, Translate("===== New volume selected b
 // {{ 157 1 0 "0490e017_1cf1_4ba4_beb3853f6acce29c" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 // }} ""
-// {{ 158 1 0 "7befe2ce_c784_4fbe_a14d39045672c8e4" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 158 1 0 "6b4e565f_3ab1_40a9_96c59adad782bffb" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
 // {{ 159 1 0 "e9aad0ee_5819_4b89_9d2f4dd0500654c4" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 if (intAspMixCycles > 0)
 {
 // }} ""
-// {{ 160 1 0 "30f0d68c_5202_426a_8f0fa452bc41746f" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 160 1 0 "0a433b82_c772_4834_a2c1c4854b8e762d" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
 // {{ 161 1 0 "66b333b0_fdec_40a1_8d4031cdd230f152" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
@@ -1697,20 +1774,24 @@ TRACELEVEL::Trace_02(TRACE_LEVEL_RELEASE, Translate("===== New mix cycle count s
 // {{ 189 1 0 "66b333b0_fdec_40a1_8d4031cdd230f152" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 // }} ""
-// {{ 190 1 0 "74f19a03_36f5_42d1_86db370cfbf9ffab" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 190 1 0 "301575a2_8d8f_4de8_b98047023baf537a" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 191 1 0 "96e130b2_4d43_42aa_98043986fb908743" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+/* {{ 1 "" "0" */ if(0){  /* }} "" */
+// {{ 191 1 0 "74f19a03_36f5_42d1_86db370cfbf9ffab" "{586C3429-F931-405f-9938-928E22C90BFA}"
+
+// }} ""
+// {{ 192 1 0 "96e130b2_4d43_42aa_98043986fb908743" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 if (fltAspMixVolume > fltVolumeMax)
 {
 // }} ""
-// {{ 192 1 0 "9741a079_b707_419c_8181c7da6673c202" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 193 1 0 "9741a079_b707_419c_8181c7da6673c202" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{{ 193 1 0 "e24c5286_ffab_44b3_b21e2b268c566703" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 194 1 0 "e24c5286_ffab_44b3_b21e2b268c566703" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::Trace_02(TRACE_LEVEL_RELEASE, Translate("===== Volume check failed."), Translate(""));
 // }} ""
-// {{ 194 1 0 "0f432c68_f0cf_4d87_87657eb3426e02b6" "{998A7CCC-4374-484D-A6ED-E8A4F0EB71BA}"
+// {{ 195 1 0 "0f432c68_f0cf_4d87_87657eb3426e02b6" "{998A7CCC-4374-484D-A6ED-E8A4F0EB71BA}"
 customDialog519D2615457D449f861D275F25C2B23C.InitCustomDialog( "0f432c68_f0cf_4d87_87657eb3426e02b6" );
 customDialog519D2615457D449f861D275F25C2B23C.SetCustomDialogProperty( "numeric1.Maximum", fltVolumeMax );
 customDialog519D2615457D449f861D275F25C2B23C.SetCustomDialogProperty( "numeric1.Minimum", fltVolumeMin );
@@ -1718,134 +1799,132 @@ customDialog519D2615457D449f861D275F25C2B23C.ShowCustomDialog();
 rtnValue = customDialog519D2615457D449f861D275F25C2B23C.GetCustomDialogProperty( "ReturnValue" );
 fltAspMixVolume = customDialog519D2615457D449f861D275F25C2B23C.GetCustomDialogProperty( "numeric1.Value" );
 // }} ""
-// {{ 195 1 0 "61630797_e86e_4fdc_be4696289ceaa415" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 196 1 0 "61630797_e86e_4fdc_be4696289ceaa415" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 196 1 0 "b58d3f3b_19b6_4c6e_a7b8bee86cea67c4" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 197 1 0 "b58d3f3b_19b6_4c6e_a7b8bee86cea67c4" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 if (rtnValue == ASWGLOBAL::DIALOG::CANCEL)
 {
 // }} ""
-// {{ 197 1 0 "afa7991e_8c49_4cef_a1f9beab5eb692e4" "{930D6C31-8EFB-11d4-A3BA-002035848439}"
+// {{ 198 1 0 "afa7991e_8c49_4cef_a1f9beab5eb692e4" "{930D6C31-8EFB-11d4-A3BA-002035848439}"
 abort;
 // }} ""
-// {{{ 198 1 0 "3eb77158_eec9_4790_8e7dc50e449689b9" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 199 1 0 "3eb77158_eec9_4790_8e7dc50e449689b9" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::Trace_02(TRACE_LEVEL_RELEASE, Translate("===== Method aborted by the user. See log files for details."), Translate(""));
 // }} ""
-// {{ 199 1 0 "b58d3f3b_19b6_4c6e_a7b8bee86cea67c4" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 200 1 0 "b58d3f3b_19b6_4c6e_a7b8bee86cea67c4" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 else
 {
 // }} ""
-// {{{ 200 1 0 "f9ec744e_bb0c_424c_9f5700b68a2cf463" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 201 1 0 "f9ec744e_bb0c_424c_9f5700b68a2cf463" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::Trace_02(TRACE_LEVEL_RELEASE, Translate("===== New volume selected by the user from the dialog box, fltAspMixVolume = "), fltAspMixVolume);
 // }} ""
-// {{ 201 1 0 "b58d3f3b_19b6_4c6e_a7b8bee86cea67c4" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 202 1 0 "b58d3f3b_19b6_4c6e_a7b8bee86cea67c4" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 // }} ""
-// {{ 202 1 0 "96e130b2_4d43_42aa_98043986fb908743" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 203 1 0 "96e130b2_4d43_42aa_98043986fb908743" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 // }} ""
-// {{ 203 1 0 "74f19a03_36f5_42d1_86db370cfbf9ffab" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 204 1 0 "74f19a03_36f5_42d1_86db370cfbf9ffab" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 204 1 0 "e9aad0ee_5819_4b89_9d2f4dd0500654c4" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+/* {{ 1 "" "1" */ } /* }} "" */
+// {{ 205 1 0 "e9aad0ee_5819_4b89_9d2f4dd0500654c4" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 // }} ""
-// {{ 205 1 0 "62558c34_e9b8_41b6_939e5b6cb4949d48" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 206 1 0 "62558c34_e9b8_41b6_939e5b6cb4949d48" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 206 1 0 "6de54970_af91_43aa_ac3cbe6ebf549128" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 207 1 0 "f316b19e_592d_4e9c_9392122076253d68" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{{ 207 1 0 "d49ba62e_76d4_4384_97556e2e496e24d1" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-TRACELEVEL::Trace_02(TRACE_LEVEL_RELEASE, Translate("===== Volumes successfully validated."), Translate(""));
+// {{{ 208 1 0 "64883610_913b_4c73_a1481a041f7954f9" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+TRACELEVEL::Trace_02(TRACE_LEVEL_RELEASE, Translate("===== Pipetting variables successfully validated."), Translate(""));
 // }} ""
-// {{ 208 1 0 "80da2836_de12_4b1f_8bfd6148b2926498" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 209 1 0 "80da2836_de12_4b1f_8bfd6148b2926498" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 209 1 0 "e0cc0d2a_e214_47dc_9843058e13c0d32f" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 210 1 0 "cecfa32d_7306_43c1_9026f0ef344d0aff" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 210 1 0 "568e3067_42f3_4dcd_8f034b39052a5e80" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 211 1 0 "568e3067_42f3_4dcd_8f034b39052a5e80" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{{ 211 1 0 "733f48cc_e6ca_4531_a9b76a559cacc842" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-intTotalPositions = SeqGetTotal(seqSource);
+// {{{ 212 1 0 "402466c6_2b55_4927_ad8d735470640068" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+intTotalPositions = SeqGetTotal(i_seqSource);
 // }} ""
-// {{{ 212 1 0 "6fdb6939_f693_43ed_95f6cc8e9eea4619" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-TRACELEVEL::Trace_02(TRACE_LEVEL_RELEASE, Translate("===== Total positions in seqSource = "), intTotalPositions);
+// {{{ 213 1 0 "cf6c3b64_04e2_428f_96775386f0c9c110" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+TRACELEVEL::Trace_02(TRACE_LEVEL_RELEASE, Translate("===== Total positions in i_seqSource = "), intTotalPositions);
 // }} ""
-// {{ 213 1 0 "cd833e83_e211_4f71_9a6557dab41f71a6" "{B31F3544-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 214 1 0 "cd833e83_e211_4f71_9a6557dab41f71a6" "{B31F3544-5D80-11d4-A5EB-0050DA737D89}"
 intTotalPositions = intTotalPositions % 96;
 // }} ""
-// {{ 214 1 0 "7c376871_90f2_4515_90c9d48ba69e96b3" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 215 1 0 "7c376871_90f2_4515_90c9d48ba69e96b3" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 if (intTotalPositions != 0)
 {
 // }} ""
-// {{ 215 1 0 "3c31b37e_54db_4e73_9db1c5758c784c76" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 216 1 0 "3c31b37e_54db_4e73_9db1c5758c784c76" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{{ 216 1 0 "3a3d1e6d_84d7_43c3_882387bcdbdca09b" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 217 1 0 "3a3d1e6d_84d7_43c3_882387bcdbdca09b" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::Trace_02(TRACE_LEVEL_RELEASE, Translate("===== Sequence positions check failed."), Translate(""));
 // }} ""
-// {{ 217 1 0 "25e3f10f_1693_4bcc_b94cc76a57bafc06" "{998A7CCC-4374-484D-A6ED-E8A4F0EB71BA}"
+// {{ 218 1 0 "25e3f10f_1693_4bcc_b94cc76a57bafc06" "{998A7CCC-4374-484D-A6ED-E8A4F0EB71BA}"
 customDialogC0C1EB6E1993416dACEF2A944242BC7B.InitCustomDialog( "25e3f10f_1693_4bcc_b94cc76a57bafc06" );
 customDialogC0C1EB6E1993416dACEF2A944242BC7B.ShowCustomDialog();
 rtnValue = customDialogC0C1EB6E1993416dACEF2A944242BC7B.GetCustomDialogProperty( "ReturnValue" );
 // }} ""
-// {{ 218 1 0 "da3fb4af_282c_49e1_9ec8208ba4b8f639" "{930D6C31-8EFB-11d4-A3BA-002035848439}"
+// {{ 219 1 0 "da3fb4af_282c_49e1_9ec8208ba4b8f639" "{930D6C31-8EFB-11d4-A3BA-002035848439}"
 abort;
 // }} ""
-// {{ 219 1 0 "7c376871_90f2_4515_90c9d48ba69e96b3" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 220 1 0 "7c376871_90f2_4515_90c9d48ba69e96b3" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 // }} ""
-// {{ 220 1 0 "e0cc0d2a_e214_47dc_9843058e13c0d32f" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 221 1 0 "cecfa32d_7306_43c1_9026f0ef344d0aff" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 221 1 0 "0536853d_31f2_45b7_950a21cc36e05d80" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 222 1 0 "6fec0d1e_061f_4603_adb2a9d5ba6831e8" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 222 1 0 "86817eb1_f437_45f7_a992bafec965a092" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 223 1 0 "86817eb1_f437_45f7_a992bafec965a092" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{{ 223 1 0 "427e6727_ab7f_4ced_b85b03cd6c2a586e" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-intTotalPositions = SeqGetTotal(seqDestination);
+// {{{ 224 1 0 "dd3f7f6a_9f3f_4110_ad7f3762fa9afca8" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+intTotalPositions = SeqGetTotal(i_seqDestination);
 // }} ""
-// {{{ 224 1 0 "28b38380_b1ba_48e3_869e23e5dc538eba" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-TRACELEVEL::Trace_02(TRACE_LEVEL_RELEASE, Translate("===== Total positions in seqDestination = "), intTotalPositions);
+// {{{ 225 1 0 "6f451981_bfd4_4176_b1525cf1b5210866" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+TRACELEVEL::Trace_02(TRACE_LEVEL_RELEASE, Translate("===== Total positions in i_seqDestination = "), intTotalPositions);
 // }} ""
-// {{ 225 1 0 "c3b63f42_dfce_40b4_a869ea55877657f2" "{B31F3544-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 226 1 0 "c3b63f42_dfce_40b4_a869ea55877657f2" "{B31F3544-5D80-11d4-A5EB-0050DA737D89}"
 intTotalPositions = intTotalPositions % 96;
 // }} ""
-// {{ 226 1 0 "cb71e590_4609_4587_9569e3b335c42a93" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 227 1 0 "cb71e590_4609_4587_9569e3b335c42a93" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 if (intTotalPositions != 0)
 {
 // }} ""
-// {{ 227 1 0 "20e137c6_e7e1_4689_8138e4af9bf47272" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 228 1 0 "20e137c6_e7e1_4689_8138e4af9bf47272" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{{ 228 1 0 "0fd320c1_6dc4_4c6a_b7ea09b69bfad417" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 229 1 0 "0fd320c1_6dc4_4c6a_b7ea09b69bfad417" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::Trace_02(TRACE_LEVEL_RELEASE, Translate("===== Sequence positions check failed."), Translate(""));
 // }} ""
-// {{ 229 1 0 "6e0ce34e_dd59_4e03_9829b447891dd555" "{998A7CCC-4374-484D-A6ED-E8A4F0EB71BA}"
+// {{ 230 1 0 "6e0ce34e_dd59_4e03_9829b447891dd555" "{998A7CCC-4374-484D-A6ED-E8A4F0EB71BA}"
 customDialog9B898146ED7F4a26BD1F219FF7FE1094.InitCustomDialog( "6e0ce34e_dd59_4e03_9829b447891dd555" );
 customDialog9B898146ED7F4a26BD1F219FF7FE1094.ShowCustomDialog();
 rtnValue = customDialog9B898146ED7F4a26BD1F219FF7FE1094.GetCustomDialogProperty( "ReturnValue" );
 // }} ""
-// {{ 230 1 0 "34586bc8_0dd4_45d8_b0323cce8003d26c" "{930D6C31-8EFB-11d4-A3BA-002035848439}"
+// {{ 231 1 0 "34586bc8_0dd4_45d8_b0323cce8003d26c" "{930D6C31-8EFB-11d4-A3BA-002035848439}"
 abort;
 // }} ""
-// {{ 231 1 0 "cb71e590_4609_4587_9569e3b335c42a93" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 232 1 0 "cb71e590_4609_4587_9569e3b335c42a93" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 // }} ""
-// {{ 232 1 0 "0536853d_31f2_45b7_950a21cc36e05d80" "{586C3429-F931-405f-9938-928E22C90BFA}"
+// {{ 233 1 0 "6fec0d1e_061f_4603_adb2a9d5ba6831e8" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{{ 233 1 0 "58db5969_ccbc_4d66_8369766dbb7b3390" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 234 1 0 "58db5969_ccbc_4d66_8369766dbb7b3390" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::Trace_02(TRACE_LEVEL_RELEASE, Translate("===== Seqeunces successfully validated."), Translate(""));
-// }} ""
-// {{ 234 1 0 "8f05ad23_054c_47ab_965564b59fe7d442" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
-
 // }} ""
 // {{ 235 1 0 "69963d7b_2376_475b_b31c231c85b4688a" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
@@ -1914,8 +1993,8 @@ if (intTipType != 0)
 // {{{ 255 1 0 "2e834ce5_4b28_4743_96e3d3f4fc88d851" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::Trace_02(TRACE_LEVEL_RELEASE, Translate("===== Liquid class check failed."), Translate(""));
 // }} ""
-// {{ 256 1 0 "fea6119f_e0e2_48fc_87fa6ea7ea15b0ce" "{998A7CCC-4374-484D-A6ED-E8A4F0EB71BA}"
-customDialog95DF5E5FDE6A46d1B867DCC57CF6887B.InitCustomDialog( "fea6119f_e0e2_48fc_87fa6ea7ea15b0ce" );
+// {{ 256 1 0 "968cced9_4cb9_4cef_badecf3315682c7b" "{998A7CCC-4374-484D-A6ED-E8A4F0EB71BA}"
+customDialog95DF5E5FDE6A46d1B867DCC57CF6887B.InitCustomDialog( "968cced9_4cb9_4cef_badecf3315682c7b" );
 customDialog95DF5E5FDE6A46d1B867DCC57CF6887B.ShowCustomDialog();
 rtnValue = customDialog95DF5E5FDE6A46d1B867DCC57CF6887B.GetCustomDialogProperty( "ReturnValue" );
 // }} ""
@@ -1928,53 +2007,53 @@ abort;
 // {{ 259 1 0 "1605d0eb_1598_49a7_a6c8396c5c1f289c" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 260 1 0 "591dbfb4_27fb_4585_8cd07ef5e93f7c1f" "{586C3429-F931-405f-9938-928E22C90BFA}"
-
-// }} ""
-// {{{ 261 1 0 "650e8ff1_e7ca_48b8_857c143246f1e57e" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 260 1 0 "f730fe28_e2c9_41f4_b52dcb0501c57ee1" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::Trace_02(TRACE_LEVEL_RELEASE, Translate("===== Liquid class successfully validated."), Translate(""));
 // }} ""
-// {{ 262 1 0 "68bd6707_1803_4e18_ae40d1791e3c0132" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 261 1 0 "591dbfb4_27fb_4585_8cd07ef5e93f7c1f" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 263 1 0 "84f4dece_3167_4a6d_95940f3989c539b4" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 262 1 0 "84f4dece_3167_4a6d_95940f3989c539b4" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 264 1 0 "649d7d8c_bbcc_41d7_a0d6970444cfcded" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 263 1 0 "649d7d8c_bbcc_41d7_a0d6970444cfcded" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
 {
 for(loopCounter2 = 0; loopCounter2 < 1;)
 {
 loopCounter2 = loopCounter2 + 1;
 // }} ""
-// {{ 265 1 0 "9a9556a4_fc6a_4f2b_b1f67edf4d646564" "ML_STAR:{E294A9A7-BEFC-4000-9A4C-926B91B8DE1C}"
+// {{ 264 1 0 "7ecade62_f67d_411c_b014cf3783775eb0" "ML_STAR:{E294A9A7-BEFC-4000-9A4C-926B91B8DE1C}"
 {
-	ML_STAR._E294A9A7_BEFC_4000_9A4C_926B91B8DE1C("9a9556a4_fc6a_4f2b_b1f67edf4d646564"); // EasyHead96Aspirate
+	ML_STAR._E294A9A7_BEFC_4000_9A4C_926B91B8DE1C("7ecade62_f67d_411c_b014cf3783775eb0"); // EasyHead96Aspirate
 }
 // }} ""
-// {{ 266 1 0 "8f90524c_b36b_475f_a9bc06d152315328" "ML_STAR:{7DE53592-BBE5-4f1d-B657-161F1AAECA3E}"
+// {{ 265 1 0 "c2d45e5a_7218_4549_be14cf89a462658b" "ML_STAR:{7DE53592-BBE5-4f1d-B657-161F1AAECA3E}"
 {
-	ML_STAR._7DE53592_BBE5_4f1d_B657_161F1AAECA3E("8f90524c_b36b_475f_a9bc06d152315328"); // EasyHead96Dispense
+	ML_STAR._7DE53592_BBE5_4f1d_B657_161F1AAECA3E("c2d45e5a_7218_4549_be14cf89a462658b"); // EasyHead96Dispense
 }
 // }} ""
-// {{ 267 1 0 "6ebebc5c_699c_4fa4_8ecd8d68641280f5" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 266 1 0 "6ebebc5c_699c_4fa4_8ecd8d68641280f5" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 if (blnTipEject == 1)
 {
 // }} ""
-// {{ 268 1 0 "650560ec_ae5f_4a2f_bcad78c41f8c9c88" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 267 1 0 "650560ec_ae5f_4a2f_bcad78c41f8c9c88" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 269 1 0 "2e15ad1a_5bec_4661_81b02f0ad7d7eb59" "ML_STAR:{2880E77A-3D6D-40FE-AF57-1BD1FE13960C}"
+// {{ 268 1 0 "2e15ad1a_5bec_4661_81b02f0ad7d7eb59" "ML_STAR:{2880E77A-3D6D-40FE-AF57-1BD1FE13960C}"
 {
 	variable arrRetValues[];
 	arrRetValues = ML_STAR._2880E77A_3D6D_40FE_AF57_1BD1FE13960C("2e15ad1a_5bec_4661_81b02f0ad7d7eb59"); // Head96TipEject
 }
 // }} ""
-// {{ 270 1 0 "6ebebc5c_699c_4fa4_8ecd8d68641280f5" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 269 1 0 "6ebebc5c_699c_4fa4_8ecd8d68641280f5" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 // }} ""
-// {{ 271 1 0 "649d7d8c_bbcc_41d7_a0d6970444cfcded" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 270 1 0 "649d7d8c_bbcc_41d7_a0d6970444cfcded" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
 }
 }
+// }} ""
+// {{ 271 1 0 "005c0ec8_dce6_4f80_9f78fd32c01bced0" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
 // }} ""
 /* {{ 1 "" "0" */ if(0){  /* }} "" */
 // {{ 272 1 0 "821a7012_49e6_4a13_9e2cb24363d77c62" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
@@ -1984,8 +2063,8 @@ if (blnIsTwoPlate == 1)
 // {{ 273 1 0 "a3236431_48cb_4b4c_9642a0b470eb3776" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{{ 274 1 0 "a549c1be_4c03_46c8_84552be85c9388ff" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
-DATA_SequenceIncrement(blnIsTwoPlate, seqDestination);
+// {{{ 274 1 0 "5ec47079_5c01_4f6b_ba4b0ed9afa96ac5" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
+DATA_SequenceIncrement(blnIsTwoPlate, i_seqDestination);
 // }} ""
 // {{ 275 1 0 "821a7012_49e6_4a13_9e2cb24363d77c62" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
@@ -1998,7 +2077,7 @@ TRACELEVEL::TraceAction(TRACE_LEVEL_RELEASE, TRACELEVEL::ACTION::COMPLETE, Trans
 }
 // }} ""
 // {{{ 5 "DATA_SequenceIncrement" "Begin"
-function DATA_SequenceIncrement( variable blnIsTwoPlate, sequence & seqToIncrement ) void {
+function DATA_SequenceIncrement( variable blnIsTwoPlate, sequence & io_seqToIncrement ) void {
 // }} ""
 private variable intTotalPositions;
 private variable intExpectedPositions;
@@ -2012,21 +2091,21 @@ private variable strSeqName;
 // {{{ 4 1 0 "d4e6138c_ce53_401e_a1773f7ec0050d8d" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::TraceAction(TRACE_LEVEL_RELEASE, TRACELEVEL::ACTION::START, Translate("SangerCleanup_Processes"), Translate("strMethodName"), Translate("DATA_SequenceIncrement"));
 // }} ""
-// {{ 5 1 0 "a496685a_78ad_446d_a273709b1d15a7d5" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 5 1 0 "be7caa46_4186_43cb_8dbdc8b72fc6f91d" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
 // {{ 6 1 0 "ae22674c_5c05_4cd0_b7c0849cf1c33230" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
 intExpectedPositions = 192;
 // }} ""
-// {{{ 7 1 0 "6fdaafaa_91fb_436a_9583ef57cc90ead9" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-intTotalPositions = SeqGetTotal(seqToIncrement);
+// {{{ 7 1 0 "87a3f817_1fb0_4696_9d0c94418ef70431" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+intTotalPositions = SeqGetTotal(io_seqToIncrement);
 // }} ""
 // {{ 8 1 0 "1b0bc1ae_3980_4ed9_9e920e9ed20863a6" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 if (intTotalPositions == intExpectedPositions)
 {
 // }} ""
-// {{ 9 1 0 "d29b3142_abcd_41cd_8abf0d28214bddb3" "{B31F353B-5D80-11d4-A5EB-0050DA737D89}"
-intCurrentPosition = seqToIncrement.GetCurrentPosition();
+// {{ 9 1 0 "844b596e_1963_4d2c_be30d17ced6009c6" "{B31F353B-5D80-11d4-A5EB-0050DA737D89}"
+intCurrentPosition = io_seqToIncrement.GetCurrentPosition();
 // }} ""
 // {{ 10 1 0 "afcdfddc_84e9_48d0_9ba382060639ee96" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 if (intCurrentPosition == 1)
@@ -2035,8 +2114,8 @@ if (intCurrentPosition == 1)
 // {{ 11 1 0 "61899e7e_5559_4438_ad992d01896363dd" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 12 1 0 "51910a2e_232d_437d_8501b408d8df7517" "{B31F353A-5D80-11d4-A5EB-0050DA737D89}"
-seqToIncrement.SetCurrentPosition(97);
+// {{ 12 1 0 "d0d421a1_2afe_4851_96f73308c2077510" "{B31F353A-5D80-11d4-A5EB-0050DA737D89}"
+io_seqToIncrement.SetCurrentPosition(97);
 // }} ""
 // {{ 13 1 0 "afcdfddc_84e9_48d0_9ba382060639ee96" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
@@ -2048,35 +2127,30 @@ if (intCurrentPosition == 97)
 // {{ 15 1 0 "6f95ee66_a613_4721_9d0118b97c8f843c" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{{ 16 1 0 "11a7dd02_43c7_4dd3_8aef5551aa1118a3" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-SeqResetSequenceIndexes(seqToIncrement);
+// {{{ 16 1 0 "461ba2be_725b_42e6_aa21371f4a02b4f4" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqResetSequenceIndexes(io_seqToIncrement);
 // }} ""
-/* {{ 1 "" "0" */ if(0){  /* }} "" */
-// {{ 17 1 0 "04385042_c7a7_48e1_8b6625329b52208f" "{B31F353A-5D80-11d4-A5EB-0050DA737D89}"
-seqToIncrement.SetCurrentPosition(1);
-// }} ""
-/* {{ 1 "" "1" */ } /* }} "" */
-// {{ 18 1 0 "5ec05ee2_cc0c_4385_9a1c2aa199a1c458" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 17 1 0 "5ec05ee2_cc0c_4385_9a1c2aa199a1c458" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 // }} ""
-// {{{ 19 1 0 "18884c89_777f_4b25_b05fbf56ef8877aa" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-TRACELEVEL::TraceSequenceParameter(TRACE_LEVEL_RELEASE, seqToIncrement);
+// {{{ 18 1 0 "2f6a2ff9_127e_4aaf_8ba07ca6c46d372f" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+TRACELEVEL::TraceSequenceParameter(TRACE_LEVEL_RELEASE, io_seqToIncrement);
 // }} ""
-// {{ 20 1 0 "1b0bc1ae_3980_4ed9_9e920e9ed20863a6" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 19 1 0 "1b0bc1ae_3980_4ed9_9e920e9ed20863a6" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 else
 {
 // }} ""
-// {{{ 21 1 0 "d830e5f0_833c_4830_822653ea498f77b4" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
-strSeqName = SeqGetName(seqToIncrement);
+// {{{ 20 1 0 "c00917e7_297b_4784_94b41b9a38e27302" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+strSeqName = SeqGetName(io_seqToIncrement);
 // }} ""
-// {{{ 22 1 0 "f9fe7915_725b_4526_b768a4af0df061bd" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 21 1 0 "f9fe7915_725b_4526_b768a4af0df061bd" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::Trace_04(TRACE_LEVEL_RELEASE, Translate("===== The following sequence: '"), strSeqName, Translate("' does not require incrementation. "), Translate("\n The sequence has not been altered by the sub-method."));
 // }} ""
-// {{ 23 1 0 "1b0bc1ae_3980_4ed9_9e920e9ed20863a6" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 22 1 0 "1b0bc1ae_3980_4ed9_9e920e9ed20863a6" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 // }} ""
-// {{{ 24 1 0 "92c89a99_4a0e_46c7_813576ce51310b90" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 23 1 0 "92c89a99_4a0e_46c7_813576ce51310b90" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::TraceAction(TRACE_LEVEL_RELEASE, TRACELEVEL::ACTION::COMPLETE, Translate("SangerCleanup_Processes"), Translate("strMethodName"), Translate("DATA_SequenceIncrement"));
 // }} ""
 // {{{ 5 "DATA_SequenceIncrement" "End"
@@ -2086,4 +2160,4 @@ TRACELEVEL::TraceAction(TRACE_LEVEL_RELEASE, TRACELEVEL::ACTION::COMPLETE, Trans
 // {{{ 2 "LibraryNamespace" "End"
 } // library namespace
 // }} ""
-// $$author=ta16$$valid=0$$time=2026-07-08 19:03$$checksum=cd7ed0c5$$length=083$$
+// $$author=ta16$$valid=0$$time=2026-07-09 12:13$$checksum=0680776a$$length=083$$
