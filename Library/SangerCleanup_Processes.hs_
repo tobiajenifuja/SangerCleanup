@@ -1,6 +1,6 @@
 
 // this ALWAYS GENERATED file contains the sub-method library header
-// Generated at 08/07/2026 19:03:22
+// Generated at 13/07/2026 11:31:17
 
 #pragma once
 #ifndef HSL_RUNTIME
@@ -8,15 +8,15 @@ namespace SANGERCLEANUP_PROCESSES {
 function _InitLibrary() { }
 function _ExitLibrary() { }
 function Abstract(  ) void { }
-function DATA_SequenceIncrement( variable blnIsTwoPlate, sequence & seqToIncrement ) void { }
+function DATA_SequenceIncrement( variable blnIsTwoPlate, sequence & io_seqToIncrement ) void { }
 function HHS_Heat( variable intTemp ) void { }
 function HHS_Lock( variable blnGripState ) void { }
 function HHS_Shake( variable intSpeed ) void { }
-function PIP_96H_DWPToDWP( device & ML_STAR, sequence seqSource, sequence & seqDestination, variable fltVolume, variable strLiquidClass, variable fltAspHeight, variable intAspMixCycles, variable fltAspMixVolume, variable fltAspMixHeight, variable fltDispHeight, variable blnTipEject, variable & blnIsTwoPlate ) void { }
-function PIP_BeadAddition(  ) void { }
+function PIP_96H_DWPToDWP( device & ML_STAR, sequence i_seqSource, sequence i_seqDestination, variable fltVolume, variable strLiquidClass, variable fltAspHeight, variable intAspMixCycles, variable fltAspMixVolume, variable fltAspMixHeight, variable fltDispHeight, variable blnTipEject, variable & blnIsTwoPlate ) void { }
+function PIP_BeadAddition( device & ML_STAR, sequence & i_seqSource, sequence & i_seqDestination, variable fltBeadVolume, variable strLiquidClass, variable fltAspHeight, variable fltDispHeight, variable blnTipEject ) void { }
 function SYSTEM_Abort( device & ML_STAR ) void { }
 function SYSTEM_Close( device & ML_STAR ) void { }
-function SYSTEM_Init( device & ML_STAR, sequence seqCORE, sequence seqNTRTips, sequence seqNTREmptyStack, sequence & seqSource, sequence & seqBind, sequence & seqDestination, sequence & seqBindOnMag, sequence seqBeads, sequence seqElution, sequence seqEthanol, sequence seqWaste, sequence seqHHS, variable blnSim, variable & blnIsTwoPlate ) void { }
+function SYSTEM_Init( device & ML_STAR, sequence i_seqCORE, sequence i_seqNTRTips, sequence i_seqNTREmptyStack, sequence & io_seqSource, sequence & io_seqBind, sequence & io_seqDestination, sequence & io_seqBindOnMag, sequence i_seqBeads, sequence i_seqElution, sequence i_seqEthanol, sequence i_seqWaste, sequence i_seqHHS, variable blnSim, variable & blnIsTwoPlate ) void { }
 function TMR_Start( timer & strTimer, variable intTime ) void { }
 function TMR_WaitFor( timer & strTimer, variable & rtnTimerStopped ) void { }
 function TRP_DWP_CORE( sequence seqSource, sequence seqDestination, device & ML_STAR ) void { }
@@ -27,4 +27,4 @@ function TRP_PCR_CORE( sequence seqSource, sequence seqDestination, device & ML_
 #ifdef HSL_RUNTIME
 #include __filename__ ".hsi"
 #endif
-// $$author=ta16$$valid=0$$time=2026-07-08 19:03$$checksum=5d4a0f95$$length=081$$
+// $$author=kn7$$valid=0$$time=2026-07-13 11:31$$checksum=357ef9fa$$length=080$$

@@ -1,6 +1,6 @@
  namespace _Method { #include "SangerCleanup\\Library\\SangerCleanup_Processes.hs_" } 
-#include "SangerCleanup\\Deck Layouts\\Sanger_BeadCleanup_General_STAR_Template.res"
  namespace _Method { #include "HSLML_STARLib.hsl" } 
+#include "SangerCleanup\\Deck Layouts\\Sanger_BeadCleanup_General_STAR_Template.res"
  namespace _Method { #include "ASWStandard\\ASWGlobal\\ASWGlobal.hsl" } 
 /* {{ 2 "LibraryInsertLine" "" */ // }} ""
 global device ML_STAR ("SangerCleanup\\Deck Layouts\\Sanger_BeadCleanup_General_STAR_Template.lay", "ML_STAR", hslTrue);
@@ -24,30 +24,20 @@ namespace _Method { method main(  ) void {
 SANGERCLEANUP_PROCESSES::_InitLibrary();
 ::RegisterAbortHandler( "OnAbort");
 // }} ""
-// {{ 1 1 0 "95b7a0df_b90b_40dd_b71ab50ff2d9d62b" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 1 1 0 "ae641a42_a67d_46d5_bb125c8b4e6edb51" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 MECC::TraceComment(Translate("******************************************************************************************************************************************************\n                                                            Method Details\n******************************************************************************************************************************************************\nMethod:          Sanger Bead Cleanup Template\nVersion:         0.1 (pre-launch)\nDescription:     TBD\nSoftware:        Venus 4 (v 4.5.0.7977)\nAuthor(s):          Tobi Ajenifuja, Chris Henderson, Kira Nelms\n------------------------------------------------------------------------------------------------------------------------------------------------------"));
 // }} ""
-// {{{ 2 1 0 "e186df28_091f_4ea2_942f54c57155c3ef" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{ 2 1 0 "10e06f5c_6574_48d5_a1bbfe545df83bbd" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+MECC::TraceComment(Translate("test"));
+// }} ""
+// {{{ 3 1 0 "e186df28_091f_4ea2_942f54c57155c3ef" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 blnSimulationMode = HSLML_STAR::IsSimulatorMode(ML_STAR);
 // }} ""
-// {{{ 3 1 0 "37f02333_52e5_4c25_b2f94d8e07859132" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
+// {{{ 4 1 0 "a328c535_6f56_49b1_a496ccc0fb7c28c5" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
 SANGERCLEANUP_PROCESSES::SYSTEM_Init(ML_STAR, ML_STAR.COREGripTool_OnWaste_1000ul_0001, ML_STAR.NTRTips, ML_STAR.NTREmptyStack, ML_STAR.SourcePlates, ML_STAR.BindPlates, ML_STAR.DestinationPlates, ML_STAR.BindPlatesOnMagnet, ML_STAR.ResBeads, ML_STAR.ResElution, ML_STAR.ResEthanol, ML_STAR.Waste, ML_STAR.HHS, blnSimulationMode, blnIsTwoPlate);
 // }} ""
-// {{{ 4 1 0 "3c17a93b_2a2b_43f3_ba571a5c882ab541" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
-SANGERCLEANUP_PROCESSES::PIP_96H_DWPToDWP(ML_STAR, ML_STAR.ResBeads, ML_STAR.BindPlates, 50, Translate("DNAP_Tip_300ul_96COREHead_SPRI_Beads_DispenseSurface_Empty"), 0.5, 0, 0, 0, 1, 0, blnIsTwoPlate);
-// }} ""
-// {{{ 5 1 0 "c410eade_9975_4612_82d52bfdd0238e57" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
-SANGERCLEANUP_PROCESSES::DATA_SequenceIncrement(blnIsTwoPlate, ML_STAR.BindPlates);
-// }} ""
-// {{ 6 1 0 "d7e97984_3ab0_409c_ab3d763be05b6596" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
-if (blnIsTwoPlate == ASWGLOBAL::BOOL::TRUE)
-{
-// }} ""
-// {{{ 7 1 0 "621e0fdb_3037_4bf3_a7fd8223f6cf25d1" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
-SANGERCLEANUP_PROCESSES::PIP_96H_DWPToDWP(ML_STAR, ML_STAR.ResBeads, ML_STAR.BindPlates, 50, Translate("DNAP_Tip_300ul_96COREHead_SPRI_Beads_DispenseSurface_Empty"), 0.5, 0, 0, 0, 1, 0, blnIsTwoPlate);
-// }} ""
-// {{ 8 1 0 "d7e97984_3ab0_409c_ab3d763be05b6596" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
-}
+// {{{ 5 1 0 "72314a98_2bd9_48ed_9ec2b911e9787669" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
+SANGERCLEANUP_PROCESSES::PIP_BeadAddition(ML_STAR, ML_STAR.ResBeads, ML_STAR.BindPlates, 150, Translate("DNAP_Tip_300ul_96COREHead_SPRI_Beads_DispenseSurface_Empty"), 0.2, 2, 0);
 // }} ""
 // {{ 2 "AutoExitBlock" ""
 SANGERCLEANUP_PROCESSES::_ExitLibrary();
@@ -55,4 +45,4 @@ SANGERCLEANUP_PROCESSES::_ExitLibrary();
 // {{{ 5 "main" "End"
 } }
 // }} ""
-// $$author=ta16$$valid=0$$time=2026-07-08 19:03$$checksum=30c3d275$$length=083$$
+// $$author=kn7$$valid=0$$time=2026-07-13 11:31$$checksum=38212814$$length=082$$
