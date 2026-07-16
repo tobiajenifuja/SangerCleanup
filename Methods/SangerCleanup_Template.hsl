@@ -1,11 +1,15 @@
  namespace _Method { #include "SangerCleanup\\Library\\SangerCleanup_Processes.hs_" } 
  namespace _Method { #include "HSLML_STARLib.hsl" } 
- namespace _Method { #include "ASWStandard\\ASWGlobal\\ASWGlobal.hsl" } 
 #include "SangerCleanup\\Deck Layouts\\Sanger_BeadCleanup_General_STAR_Template.res"
+ namespace _Method { #include "ASWStandard\\ASWGlobal\\ASWGlobal.hsl" } 
 /* {{ 2 "LibraryInsertLine" "" */ // }} ""
 global device ML_STAR ("SangerCleanup\\Deck Layouts\\Sanger_BeadCleanup_General_STAR_Template.lay", "ML_STAR", hslTrue);
 variable blnIsTwoPlate;
 variable blnSimulationMode;
+timer tmrHHS;
+variable rtnTimerStopped;
+timer tmrBindTwo;
+timer tmrBindOne;
 /* {{ 2 "VariableInsertLine" "" */ // }} ""
 // {{ 2 "TemplateIncludeBlock" ""
  namespace _Method { #include "HSLMETEDLib.hs_" } 
@@ -33,21 +37,63 @@ blnSimulationMode = HSLML_STAR::IsSimulatorMode(ML_STAR);
 // {{{ 3 1 0 "a328c535_6f56_49b1_a496ccc0fb7c28c5" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
 SANGERCLEANUP_PROCESSES::SYSTEM_Init(ML_STAR, ML_STAR.COREGripTool_OnWaste_1000ul_0001, ML_STAR.NTRTips, ML_STAR.NTREmptyStack, ML_STAR.SourcePlates, ML_STAR.BindPlates, ML_STAR.DestinationPlates, ML_STAR.BindPlatesOnMagnet, ML_STAR.ResBeads, ML_STAR.ResElution, ML_STAR.ResEthanol, ML_STAR.Waste, ML_STAR.HHS, blnSimulationMode, blnIsTwoPlate);
 // }} ""
-// {{{ 4 1 0 "290d2c48_6421_419d_a501501b3220ae63" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
-SANGERCLEANUP_PROCESSES::PIP_96H_DWPToDWP(ML_STAR, ML_STAR.ResBeads, ML_STAR.BindPlates, 50, Translate("DNAP_Tip_300ul_96COREHead_SPRI_Beads_DispenseSurface_Empty"), 0.5, 0, 0, 0, 1, 0, blnIsTwoPlate);
+// {{ 4 1 0 "41891553_2475_4c48_a07a52aecf8d7e03" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
 // }} ""
-// {{{ 5 1 0 "c410eade_9975_4612_82d52bfdd0238e57" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
-SANGERCLEANUP_PROCESSES::DATA_SequenceIncrement(blnIsTwoPlate, ML_STAR.BindPlates);
+// {{{ 5 1 0 "597bffc6_0146_4d53_9c2ae7bf01f72fcf" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
+SANGERCLEANUP_PROCESSES::HHS_Heat(38);
 // }} ""
-// {{ 6 1 0 "d7e97984_3ab0_409c_ab3d763be05b6596" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 6 1 0 "2805969b_311a_4ad4_9bd049ab616d3712" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{{ 7 1 0 "3331ea2e_9bc9_4214_b178170f4749fcc1" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
+SANGERCLEANUP_PROCESSES::PIP_96H_DWPToDWP(ML_STAR, ML_STAR.ResBeads, ML_STAR.BindPlates, 55, Translate("DNAP_Tip_300ul_96COREHead_SPRI_Beads_DispenseSurface_Empty"), 0.5, 0, 0, 0, 1, 0, blnIsTwoPlate);
+// }} ""
+// {{{ 8 1 0 "65f26637_7c3a_4992_92a403660ffaf5a6" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
+SANGERCLEANUP_PROCESSES::PIP_96H_SWPToDWP(ML_STAR, ML_STAR.SourcePlates, ML_STAR.BindPlates, 50, Translate("DNAP_Tip_300ul_96COREHead_Water_DispenseSurface_Empty_Slow_Dispense"), 0.2, 0, 0, 0, 1, 30, 80, 0, 1, blnIsTwoPlate);
+// }} ""
+// {{{ 9 1 0 "bc8923f6_e8aa_4da0_a43055b93e5876bf" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
+SANGERCLEANUP_PROCESSES::TMR_Start(tmrBindOne, 180);
+// }} ""
+// {{{ 10 1 0 "43c010d9_ca72_4719_8c41b6df61a3781e" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
+SANGERCLEANUP_PROCESSES::TRP_DWP_CORE(ML_STAR, ML_STAR.BindPlates, ML_STAR.HHS, 1);
+// }} ""
+// {{{ 11 1 0 "e2b74e8a_4fb3_4040_bc08a8d1e59ee655" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
+SANGERCLEANUP_PROCESSES::HHS_Shake(1000);
+// }} ""
+// {{ 12 1 0 "d7e97984_3ab0_409c_ab3d763be05b6596" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 if (blnIsTwoPlate == ASWGLOBAL::BOOL::TRUE)
 {
 // }} ""
-// {{{ 7 1 0 "621e0fdb_3037_4bf3_a7fd8223f6cf25d1" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
-SANGERCLEANUP_PROCESSES::PIP_96H_DWPToDWP(ML_STAR, ML_STAR.ResBeads, ML_STAR.BindPlates, 50, Translate("DNAP_Tip_300ul_96COREHead_SPRI_Beads_DispenseSurface_Empty"), 0.5, 0, 0, 0, 1, 0, blnIsTwoPlate);
+// {{ 13 1 0 "19b226c8_0832_4811_9a6818dfdb574470" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
 // }} ""
-// {{ 8 1 0 "d7e97984_3ab0_409c_ab3d763be05b6596" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{{ 14 1 0 "45782927_4232_478b_8d7a619b328cff94" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
+SANGERCLEANUP_PROCESSES::DATA_SequenceIncrement(blnIsTwoPlate, ML_STAR.BindPlates);
+// }} ""
+// {{{ 15 1 0 "53a1f0fe_79b7_4752_814fb9fadf65afcc" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
+SANGERCLEANUP_PROCESSES::DATA_SequenceIncrement(blnIsTwoPlate, ML_STAR.SourcePlates);
+// }} ""
+// {{ 16 1 0 "73b4d822_caa2_40ba_ace7a636ae7bf3ac" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{{ 17 1 0 "dcd586e4_57cf_4bcf_ae29c3617001b171" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
+SANGERCLEANUP_PROCESSES::PIP_96H_DWPToDWP(ML_STAR, ML_STAR.ResBeads, ML_STAR.BindPlates, 55, Translate("DNAP_Tip_300ul_96COREHead_SPRI_Beads_DispenseSurface_Empty"), 0.5, 0, 0, 0, 1, 0, blnIsTwoPlate);
+// }} ""
+// {{{ 18 1 0 "3d84dccd_51b7_427c_bcd2d32c0a255a96" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
+SANGERCLEANUP_PROCESSES::PIP_96H_SWPToDWP(ML_STAR, ML_STAR.SourcePlates, ML_STAR.BindPlates, 50, Translate("DNAP_Tip_300ul_96COREHead_Water_DispenseSurface_Empty_Slow_Dispense"), 0.2, 0, 0, 0, 1, 30, 80, 0, 1, blnIsTwoPlate);
+// }} ""
+// {{{ 19 1 0 "ac2bfdd8_8434_47fc_937c86b36b1ef27b" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
+SANGERCLEANUP_PROCESSES::TMR_Start(tmrBindTwo, 180);
+// }} ""
+// {{ 20 1 0 "d7e97984_3ab0_409c_ab3d763be05b6596" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
+// }} ""
+// {{{ 21 1 0 "d9c5ae45_9768_453b_bef87bd22be0d03f" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
+SANGERCLEANUP_PROCESSES::TMR_WaitFor(tmrBindOne, rtnTimerStopped);
+// }} ""
+// {{{ 22 1 0 "e8993f84_8edd_4c26_aa8d328170ce4880" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
+SANGERCLEANUP_PROCESSES::TRP_DWP_CORE(ML_STAR, ML_STAR.HHS, ML_STAR.BindPlatesOnMagnet, 1);
 // }} ""
 // {{ 2 "AutoExitBlock" ""
 SANGERCLEANUP_PROCESSES::_ExitLibrary();
@@ -55,4 +101,4 @@ SANGERCLEANUP_PROCESSES::_ExitLibrary();
 // {{{ 5 "main" "End"
 } }
 // }} ""
-// $$author=ta16$$valid=0$$time=2026-07-09 12:13$$checksum=db836f85$$length=083$$
+// $$author=ta16$$valid=0$$time=2026-07-16 11:27$$checksum=74e42cd0$$length=083$$

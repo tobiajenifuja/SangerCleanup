@@ -1,6 +1,6 @@
 
 // this ALWAYS GENERATED file contains the sub-method library header
-// Generated at 09/07/2026 12:13:02
+// Generated at 16/07/2026 11:27:11
 
 #pragma once
 #ifndef HSL_RUNTIME
@@ -13,18 +13,19 @@ function HHS_Heat( variable intTemp ) void { }
 function HHS_Lock( variable blnGripState ) void { }
 function HHS_Shake( variable intSpeed ) void { }
 function PIP_96H_DWPToDWP( device & ML_STAR, sequence i_seqSource, sequence i_seqDestination, variable fltVolume, variable strLiquidClass, variable fltAspHeight, variable intAspMixCycles, variable fltAspMixVolume, variable fltAspMixHeight, variable fltDispHeight, variable blnTipEject, variable & blnIsTwoPlate ) void { }
+function PIP_96H_SWPToDWP( device & ML_STAR, sequence i_seqSource, sequence i_seqDestination, variable fltVolume, variable strLiquidClass, variable fltAspHeight, variable intAspMixCycles, variable fltAspMixVolume, variable fltAspMixHeight, variable fltDispHeight, variable intDispMixCycles, variable fltDispMixVolume, variable fltDispMixHeight, variable blnDispMixFollow, variable & blnIsTwoPlate ) void { }
 function PIP_BeadAddition(  ) void { }
 function SYSTEM_Abort( device & ML_STAR ) void { }
 function SYSTEM_Close( device & ML_STAR ) void { }
 function SYSTEM_Init( device & ML_STAR, sequence i_seqCORE, sequence i_seqNTRTips, sequence i_seqNTREmptyStack, sequence & io_seqSource, sequence & io_seqBind, sequence & io_seqDestination, sequence & io_seqBindOnMag, sequence i_seqBeads, sequence i_seqElution, sequence i_seqEthanol, sequence i_seqWaste, sequence i_seqHHS, variable blnSim, variable & blnIsTwoPlate ) void { }
 function TMR_Start( timer & strTimer, variable intTime ) void { }
 function TMR_WaitFor( timer & strTimer, variable & rtnTimerStopped ) void { }
-function TRP_DWP_CORE( sequence seqSource, sequence seqDestination, device & ML_STAR ) void { }
-function TRP_PCR_CORE( sequence seqSource, sequence seqDestination, device & ML_STAR ) void { }
+function TRP_DWP_CORE( device & ML_STAR, sequence i_seqSource, sequence i_seqDestination, variable i_blnEjectTool ) void { }
+function TRP_SWP_CORE( device & ML_STAR, sequence i_seqSource, sequence i_seqDestination, variable i_blnEjectTool ) void { }
 } // namespace
 #endif
 
 #ifdef HSL_RUNTIME
 #include __filename__ ".hsi"
 #endif
-// $$author=ta16$$valid=0$$time=2026-07-09 12:13$$checksum=b4f801ef$$length=081$$
+// $$author=ta16$$valid=0$$time=2026-07-16 11:27$$checksum=c5de469b$$length=081$$
