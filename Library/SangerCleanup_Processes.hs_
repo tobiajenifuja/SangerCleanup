@@ -1,6 +1,6 @@
 
 // this ALWAYS GENERATED file contains the sub-method library header
-// Generated at 13/07/2026 11:31:17
+// Generated at 13/07/2026 16:11:37
 
 #pragma once
 #ifndef HSL_RUNTIME
@@ -14,6 +14,7 @@ function HHS_Lock( variable blnGripState ) void { }
 function HHS_Shake( variable intSpeed ) void { }
 function PIP_96H_DWPToDWP( device & ML_STAR, sequence i_seqSource, sequence i_seqDestination, variable fltVolume, variable strLiquidClass, variable fltAspHeight, variable intAspMixCycles, variable fltAspMixVolume, variable fltAspMixHeight, variable fltDispHeight, variable blnTipEject, variable & blnIsTwoPlate ) void { }
 function PIP_BeadAddition( device & ML_STAR, sequence & i_seqSource, sequence & i_seqDestination, variable fltBeadVolume, variable strLiquidClass, variable fltAspHeight, variable fltDispHeight, variable blnTipEject ) void { }
+function PIP_SampleAddition( device & ML_STAR, sequence & i_seqSource, sequence & i_seqDestination, variable fltSampleVolume, variable strLiquidClass, variable fltAspHeight, variable intAspMixCycles, variable fltAspMixHeight, variable fltAspMixVolume, variable fltDispHeight, variable intDispMixCycles, variable fltDispMixHeight, variable fltDispMixVolume ) void { }
 function SYSTEM_Abort( device & ML_STAR ) void { }
 function SYSTEM_Close( device & ML_STAR ) void { }
 function SYSTEM_Init( device & ML_STAR, sequence i_seqCORE, sequence i_seqNTRTips, sequence i_seqNTREmptyStack, sequence & io_seqSource, sequence & io_seqBind, sequence & io_seqDestination, sequence & io_seqBindOnMag, sequence i_seqBeads, sequence i_seqElution, sequence i_seqEthanol, sequence i_seqWaste, sequence i_seqHHS, variable blnSim, variable & blnIsTwoPlate ) void { }
@@ -27,4 +28,4 @@ function TRP_PCR_CORE( sequence seqSource, sequence seqDestination, device & ML_
 #ifdef HSL_RUNTIME
 #include __filename__ ".hsi"
 #endif
-// $$author=kn7$$valid=0$$time=2026-07-13 11:31$$checksum=357ef9fa$$length=080$$
+// $$author=kn7$$valid=0$$time=2026-07-13 16:11$$checksum=aeaad6ba$$length=080$$
