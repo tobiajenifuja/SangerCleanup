@@ -1,6 +1,6 @@
 
 // this ALWAYS GENERATED file contains the sub-method library header
-// Generated at 20/07/2026 12:01:09
+// Generated at 21/07/2026 10:47:15
 
 #pragma once
 #ifndef HSL_RUNTIME
@@ -12,9 +12,10 @@ function DATA_SequenceIncrement( variable blnIsTwoPlate, sequence & io_seqToIncr
 function HHS_Heat( variable intTemp ) void { }
 function HHS_Lock( variable blnGripState ) void { }
 function HHS_Shake( variable intSpeed ) void { }
-function PIP_96H_DWPToDWP( device & ML_STAR, sequence i_seqSource, sequence i_seqDestination, variable fltVolume, variable strLiquidClass, variable fltAspHeight, variable intAspMixCycles, variable fltAspMixVolume, variable fltAspMixHeight, variable fltDispHeight, variable blnTipEject, variable & blnIsTwoPlate ) void { }
-function PIP_96H_ResToDWP( device & ML_STAR, sequence i_seqSource, sequence i_seqDestination, variable fltVolume, variable fltDispHeight, variable & blnIsTwoPlate ) void { }
-function PIP_96H_SWPToDWP( device & ML_STAR, sequence i_seqSource, sequence i_seqDestination, variable fltVolume, variable strLiquidClass, variable fltAspHeight, variable intAspMixCycles, variable fltAspMixVolume, variable fltAspMixHeight, variable fltDispHeight, variable intDispMixCycles, variable fltDispMixVolume, variable fltDispMixHeight, variable blnDispMixFollow, variable & blnIsTwoPlate ) void { }
+function PIP_96H_DWPToDWP( device & ML_STAR, sequence i_seqSource, sequence i_seqDestination, variable fltVolume, variable strLiquidClass, variable fltAspHeight, variable intAspMixCycles, variable fltAspMixVolume, variable fltAspMixHeight, variable fltDispHeight, variable blnTipEject ) void { }
+function PIP_96H_DWPToSWP( device & ML_STAR, sequence i_seqSource, sequence i_seqDestination, variable fltVolume, variable strLiquidClass, variable fltAspHeight, variable fltDispHeight ) void { }
+function PIP_96H_ResToDWP( device & ML_STAR, sequence i_seqSource, sequence i_seqDestination, variable fltVolume, variable fltDispHeight ) void { }
+function PIP_96H_SWPToDWP( device & ML_STAR, sequence i_seqSource, sequence i_seqDestination, variable fltVolume, variable strLiquidClass, variable fltAspHeight, variable intAspMixCycles, variable fltAspMixVolume, variable fltAspMixHeight, variable fltDispHeight, variable intDispMixCycles, variable fltDispMixVolume, variable fltDispMixHeight, variable blnDispMixFollow ) void { }
 function PIP_BeadAddition( device & ML_STAR, sequence & i_seqSource, sequence & i_seqDestination, variable fltBeadVolume, variable strLiquidClass, variable fltAspHeight, variable fltDispHeight, variable blnTipEject ) void { }
 function PIP_SampleAddition( device & ML_STAR, sequence & i_seqSource, sequence & i_seqDestination, variable fltSampleVolume, variable strLiquidClass, variable fltAspHeight, variable intAspMixCycles, variable fltAspMixHeight, variable fltAspMixVolume, variable fltDispHeight, variable intDispMixCycles, variable fltDispMixHeight, variable fltDispMixVolume ) void { }
 function SYSTEM_Abort( device & ML_STAR ) void { }
@@ -30,4 +31,4 @@ function TRP_SWP_CORE( device & ML_STAR, sequence i_seqSource, sequence i_seqDes
 #ifdef HSL_RUNTIME
 #include __filename__ ".hsi"
 #endif
-// $$author=ta16$$valid=0$$time=2026-07-20 12:01$$checksum=b433acf9$$length=081$$
+// $$author=ta16$$valid=0$$time=2026-07-21 10:47$$checksum=19b707ec$$length=081$$
