@@ -1,6 +1,6 @@
 
 // this ALWAYS GENERATED file contains the sub-method library header
-// Generated at 23/07/2026 10:51:47
+// Generated at 23/07/2026 14:46:49
 
 #pragma once
 #ifndef HSL_RUNTIME
@@ -16,11 +16,11 @@ function PIP_96H_DWPToDWP( device & ML_STAR, sequence i_seqSource, sequence i_se
 function PIP_96H_DWPToSWP( device & ML_STAR, sequence i_seqSource, sequence i_seqDestination, variable fltVolume, variable strLiquidClass, variable fltAspHeight, variable fltDispHeight ) void { }
 function PIP_96H_ResToDWP( device & ML_STAR, sequence i_seqSource, sequence i_seqDestination, variable fltVolume, variable fltDispHeight ) void { }
 function PIP_96H_SWPToDWP( device & ML_STAR, sequence i_seqSource, sequence i_seqDestination, variable fltVolume, variable strLiquidClass, variable fltAspHeight, variable intAspMixCycles, variable fltAspMixVolume, variable fltAspMixHeight, variable fltDispHeight, variable intDispMixCycles, variable fltDispMixVolume, variable fltDispMixHeight, variable blnDispMixFollow ) void { }
-function PIP_BeadAddition( device & ML_STAR, sequence & i_seqSource, sequence & i_seqDestination, variable fltBeadVolume, variable strLiquidClass, variable fltAspHeight, variable fltDispHeight, variable blnTipEject ) void { }
+function PIP_BeadAddition( device & ML_STAR, sequence & i_seqSource, sequence & i_seqDestination, variable fltBeadVolume, variable strLiquidClass, variable fltAspHeight, variable fltDispHeight, variable intMixCycles, variable fltMixHeight, variable fltMixVolume, variable blnTipEject ) void { }
 function PIP_ElutionAddition( device & ML_STAR, sequence & i_seqSource, sequence & i_seqDestination, variable fltElutionVolume, variable strLiquidClass, variable fltAspHeight, variable fltDispHeight, variable fltMixCycles, variable fltMixVolume, variable fltMixHeight, variable blnTipEject ) void { }
 function PIP_ElutionTransfer( device & ML_STAR, sequence & i_seqSource, sequence & i_seqDestination, variable fltElutionVolume, variable strLiquidClass, variable fltAspHeight, variable fltDispHeight ) void { }
-function PIP_EthanolWashes( device & ML_STAR, sequence & i_seqSource, sequence & i_seqDestination, sequence & i_seqWaste, variable fltWashVolume, variable strLiquidClass, variable fltEthanolAspHeight, variable fltWashDispHeight, variable fltWashAspHeight, variable fltWasteDispHeight, variable fltFinalWashRemovalVolume, variable fltFinalWasteDispHeight ) void { }
-function PIP_SampleAddition( device & ML_STAR, sequence & i_seqSource, sequence & i_seqDestination, variable fltSampleVolume, variable strLiquidClass, variable fltAspHeight, variable intAspMixCycles, variable fltAspMixHeight, variable fltAspMixVolume, variable fltDispHeight, variable intDispMixCycles, variable fltDispMixHeight, variable fltDispMixVolume ) void { }
+function PIP_EthanolWashes( device & ML_STAR, sequence & i_seqSource, sequence & i_seqDestination, sequence & i_seqWaste, variable fltWashVolume, variable strEthanolAspLiquidClass, variable fltEthanolAspHeight, variable strWashDispLiquidClass, variable fltWashDispHeight, variable fltWasteAspHeight, variable strWasteLiquidClass, variable fltWasteDispHeight, variable fltFinalWasteRemovalVolume, variable fltFinalWasteDispHeight ) void { }
+function PIP_SampleAddition( device & ML_STAR, sequence & i_seqSource, sequence & i_seqDestination, variable fltSampleVolume, variable strLiquidClass, variable fltAspHeight, variable intAspMixCycles, variable fltAspMixHeight, variable fltAspMixVolume, variable fltDispHeight, variable blnDispMixFollow, variable intDispMixCycles, variable fltDispMixHeight, variable fltDispMixVolume ) void { }
 function PIP_SupernatantRemoval( device & ML_STAR, sequence & i_seqSource, sequence & i_seqDestination, variable fltSupernatantVolume, variable strLiquidClass, variable fltAspHeight, variable fltDispHeight ) void { }
 function SYSTEM_Abort( device & ML_STAR ) void { }
 function SYSTEM_Close( device & ML_STAR ) void { }
@@ -35,4 +35,4 @@ function TRP_SWP_CORE( device & ML_STAR, sequence i_seqSource, sequence i_seqDes
 #ifdef HSL_RUNTIME
 #include __filename__ ".hsi"
 #endif
-// $$author=ta16$$valid=0$$time=2026-07-23 10:51$$checksum=d3aaf4dd$$length=081$$
+// $$author=kn7$$valid=0$$time=2026-07-23 14:46$$checksum=d18e9c31$$length=080$$
