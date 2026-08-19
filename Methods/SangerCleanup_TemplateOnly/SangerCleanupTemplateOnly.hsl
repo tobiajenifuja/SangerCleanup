@@ -2,7 +2,7 @@
 global device ML_STAR ("SangerCleanup\\Deck Layouts\\Sanger_BeadCleanup_General_STAR_Template.lay", "ML_STAR", hslTrue);
  namespace _Method { #include "HSLML_STARLib.hsl" } 
  namespace _Method { #include "ASWStandard\\TraceLevel\\TraceLevel.hsl" } 
- namespace _Method { #include "..\\HslHamHeaterShakerLib.hsl" } 
+ namespace _Method { #include "HslHamHeaterShakerLib.hsl" } 
  namespace _Method { #include "MLSTARLiquidClassLib.hsl" } 
  namespace _Method { #include "CheckCarrierPresenceAbsence.hs_" } 
  namespace _Method { #include "HSLStrLib.hsl" } 
@@ -484,4 +484,4 @@ NTRDIRECTUSE_WGSPCRXP::_ExitLibrary();
 // {{{ 5 "main" "End"
 } }
 // }} ""
-// $$author=kn7$$valid=0$$time=2026-08-14 14:03$$checksum=64fac013$$length=082$$
+// $$author=ch33$$valid=0$$time=2026-08-19 16:20$$checksum=b8678533$$length=083$$
