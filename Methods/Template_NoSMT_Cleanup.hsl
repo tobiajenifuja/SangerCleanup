@@ -26,7 +26,6 @@ variable rtnValue;
 variable u_strWorkflowName;
 dialog customDialogAEFFEFC06E7A4619AD79ACA1CE501C8D;
 variable u_strTipCounter;
-variable intSourceSequenceEnd;
 /* {{ 2 "VariableInsertLine" "" */ // }} ""
 // {{ 2 "TemplateIncludeBlock" ""
  namespace _Method { #include "HSLMETEDLib.hs_" } 
@@ -185,8 +184,8 @@ B_LoadInstructions();
 // {{ 39 1 0 "ef5d6eb7_4070_4d46_af0593b47ed4029e" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 40 1 0 "b365c267_7719_4b2e_87085f1878d931f2" "{998A7CCC-4374-484D-A6ED-E8A4F0EB71BA}"
-customDialog14093038CF5D47f8AEF21EA6CDFC6D76.InitCustomDialog( "b365c267_7719_4b2e_87085f1878d931f2" );
+// {{ 40 1 0 "036f75c3_ccbb_4b8a_85fcb745ce7a0f87" "{998A7CCC-4374-484D-A6ED-E8A4F0EB71BA}"
+customDialog14093038CF5D47f8AEF21EA6CDFC6D76.InitCustomDialog( "036f75c3_ccbb_4b8a_85fcb745ce7a0f87" );
 customDialog14093038CF5D47f8AEF21EA6CDFC6D76.SetCustomDialogProperty( "textHeader.Text", u_strWorkflowName );
 customDialog14093038CF5D47f8AEF21EA6CDFC6D76.ShowCustomDialog();
 rtnValue = customDialog14093038CF5D47f8AEF21EA6CDFC6D76.GetCustomDialogProperty( "ReturnValue" );
@@ -230,4 +229,4 @@ NTRDIRECTUSE_WGSPCRXP::_ExitLibrary();
 // {{{ 5 "main" "End"
 } }
 // }} ""
-// $$author=kn7$$valid=0$$time=2026-08-26 14:27$$checksum=fd886539$$length=082$$
+// $$author=ta16$$valid=0$$time=2026-08-27 13:57$$checksum=199fb4eb$$length=083$$
