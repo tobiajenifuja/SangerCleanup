@@ -59,7 +59,7 @@ LOAD_INSTRUCTIONS::_InitLibrary();
 NTRDIRECTUSE_WGSPCRXP::_InitLibrary();
 ::RegisterAbortHandler( "OnAbort");
 // }} ""
-// {{ 1 1 0 "cbebd812_c4d5_4c93_afe759613fc92c8c" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+// {{ 1 1 0 "57671b3f_b94b_47c8_ba07e5029a835a50" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
 // {{ 2 1 0 "ada4b90e_1fdc_4d8e_856b942a8bd5bde4" "{586C3429-F931-405f-9938-928E22C90BFA}"
@@ -232,4 +232,4 @@ NTRDIRECTUSE_WGSPCRXP::_ExitLibrary();
 // {{{ 5 "main" "End"
 } }
 // }} ""
-// $$author=Hamilton$$valid=0$$time=2026-08-27 16:11$$checksum=74c308ae$$length=087$$
+// $$author=ch33$$valid=0$$time=2026-08-28 08:06$$checksum=05f10fff$$length=083$$
