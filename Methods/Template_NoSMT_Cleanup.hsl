@@ -12,7 +12,6 @@ global device ML_STAR ("SangerCleanup\\Deck Layouts\\Sanger_BeadCleanup_General_
  namespace _Method { #include "WSI\\GitHub Integrations\\GitHubIntegrations.hs_" } 
 /* {{ 2 "LibraryInsertLine" "" */ // }} ""
 variable blnSimulationMode;
-variable retValueDialog;
 variable HHS1;
 variable intPlateNumber;
 variable u_intMaxPlateNumber;
@@ -27,6 +26,7 @@ variable u_strWorkflowName;
 dialog customDialogAEFFEFC06E7A4619AD79ACA1CE501C8D;
 variable u_strTipCounter;
 variable u_intNuncDeadVolume_Loading;
+variable retValueDialog;
 /* {{ 2 "VariableInsertLine" "" */ // }} ""
 // {{ 2 "TemplateIncludeBlock" ""
  namespace _Method { #include "HSLMETEDLib.hs_" } 
@@ -135,8 +135,8 @@ if (blnSimulationMode == 1)
 // {{ 24 1 0 "c03b20a0_2eab_41e6_a91903eb5619f838" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 25 1 0 "737783ac_bd8f_4c25_a9090968f9b16032" "{998A7CCC-4374-484D-A6ED-E8A4F0EB71BA}"
-customDialogAEFFEFC06E7A4619AD79ACA1CE501C8D.InitCustomDialog( "737783ac_bd8f_4c25_a9090968f9b16032" );
+// {{ 25 1 0 "96c1d39f_98b3_4b44_b9828b7378c0115b" "{998A7CCC-4374-484D-A6ED-E8A4F0EB71BA}"
+customDialogAEFFEFC06E7A4619AD79ACA1CE501C8D.InitCustomDialog( "96c1d39f_98b3_4b44_b9828b7378c0115b" );
 customDialogAEFFEFC06E7A4619AD79ACA1CE501C8D.SetCustomDialogProperty( "textHeader.Text", u_strWorkflowName );
 customDialogAEFFEFC06E7A4619AD79ACA1CE501C8D.ShowCustomDialog();
 retValueDialog = customDialogAEFFEFC06E7A4619AD79ACA1CE501C8D.GetCustomDialogProperty( "ReturnValue" );
@@ -196,8 +196,8 @@ B_LoadInstructions();
 // {{ 42 1 0 "ef5d6eb7_4070_4d46_af0593b47ed4029e" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 43 1 0 "036f75c3_ccbb_4b8a_85fcb745ce7a0f87" "{998A7CCC-4374-484D-A6ED-E8A4F0EB71BA}"
-customDialog14093038CF5D47f8AEF21EA6CDFC6D76.InitCustomDialog( "036f75c3_ccbb_4b8a_85fcb745ce7a0f87" );
+// {{ 43 1 0 "c5c10a02_9a21_4165_af878e797ed3fb1c" "{998A7CCC-4374-484D-A6ED-E8A4F0EB71BA}"
+customDialog14093038CF5D47f8AEF21EA6CDFC6D76.InitCustomDialog( "c5c10a02_9a21_4165_af878e797ed3fb1c" );
 customDialog14093038CF5D47f8AEF21EA6CDFC6D76.SetCustomDialogProperty( "textHeader.Text", u_strWorkflowName );
 customDialog14093038CF5D47f8AEF21EA6CDFC6D76.ShowCustomDialog();
 rtnValue = customDialog14093038CF5D47f8AEF21EA6CDFC6D76.GetCustomDialogProperty( "ReturnValue" );
@@ -243,4 +243,4 @@ GITHUBINTEGRATIONS::_ExitLibrary();
 // {{{ 5 "main" "End"
 } }
 // }} ""
-// $$author=ch33$$valid=0$$time=2026-09-01 13:35$$checksum=4c2f958b$$length=083$$
+// $$author=ch33$$valid=0$$time=2026-09-01 14:46$$checksum=80a2758a$$length=083$$

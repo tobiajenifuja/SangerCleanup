@@ -19,15 +19,18 @@ private dialog customDialog56FFAB04A8A44401904A28D541DBE967;
 // {{{ 484 1 0 "9910fcb8_97f9_4635_92eb8b464c9bedc2" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 TRACELEVEL::Trace_02(TRACE_LEVEL_RELEASE, Translate(">> Method aborted. "), Translate(""));
 // }} ""
-// {{ 485 1 0 "27d47f2d_8465_478d_98e0fd78d5a2d85f" "{998A7CCC-4374-484D-A6ED-E8A4F0EB71BA}"
-customDialog56FFAB04A8A44401904A28D541DBE967.InitCustomDialog( "27d47f2d_8465_478d_98e0fd78d5a2d85f" );
-customDialog56FFAB04A8A44401904A28D541DBE967.ShowCustomDialog();
-retValueDialog = customDialog56FFAB04A8A44401904A28D541DBE967.GetCustomDialogProperty( "ReturnValue" );
+// {{{ 485 1 0 "e48c13df_ce60_4a9b_a27c5ca5b1a18976" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
+SLACKMESSENGER_V2::SendUpdate(ML_STAR, Translate("Aborted"));
 // }} ""
-// {{{ 486 1 0 "2a902f01_e6ca_48cf_b13748b099feebf7" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{ 486 1 0 "9fa5cb7d_971c_4b86_9169b825ffb4558a" "{998A7CCC-4374-484D-A6ED-E8A4F0EB71BA}"
+customDialog56FFAB04A8A44401904A28D541DBE967.InitCustomDialog( "9fa5cb7d_971c_4b86_9169b825ffb4558a" );
+customDialog56FFAB04A8A44401904A28D541DBE967.SetCustomDialogProperty( "textHeader.Text", u_strWorkflowName );
+customDialog56FFAB04A8A44401904A28D541DBE967.ShowCustomDialog();
+// }} ""
+// {{{ 487 1 0 "2a902f01_e6ca_48cf_b13748b099feebf7" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 HSLHamHeaterShaker::StopTempCtrl(HHS1);
 // }} ""
-// {{{ 487 1 0 "211e2d6a_ba3a_4654_b73bc2590192c049" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+// {{{ 488 1 0 "211e2d6a_ba3a_4654_b73bc2590192c049" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 HSLHamHeaterShaker::Terminate();
 // }} ""
 // {{{ 5 "OnAbort" "End"
@@ -67,8 +70,8 @@ _blnSkipLoading = 0;
 if (blnSimulationMode == 1)
 {
 // }} ""
-// {{ 85 1 0 "d7173e70_93fa_4ecf_9075fffdb96ec80f" "{998A7CCC-4374-484D-A6ED-E8A4F0EB71BA}"
-customDialogBF6217906934467bAE4DABEC90A38ADC.InitCustomDialog( "d7173e70_93fa_4ecf_9075fffdb96ec80f" );
+// {{ 85 1 0 "75289080_f401_4e5c_b55dc8346bb2c318" "{998A7CCC-4374-484D-A6ED-E8A4F0EB71BA}"
+customDialogBF6217906934467bAE4DABEC90A38ADC.InitCustomDialog( "75289080_f401_4e5c_b55dc8346bb2c318" );
 customDialogBF6217906934467bAE4DABEC90A38ADC.SetCustomDialogProperty( "textHeader.Text", u_strWorkflowName );
 customDialogBF6217906934467bAE4DABEC90A38ADC.ShowCustomDialog();
 retValueDialog = customDialogBF6217906934467bAE4DABEC90A38ADC.GetCustomDialogProperty( "ReturnValue" );
@@ -441,8 +444,8 @@ GITHUBINTEGRATIONS::check_commit();
 // {{ 59 1 0 "a9fc74fa_8f7d_4300_a497b28868d1b653" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 60 1 0 "87ac93d9_1cea_4d01_b8ae4b1b0f4b8dea" "{998A7CCC-4374-484D-A6ED-E8A4F0EB71BA}"
-customDialogE46D62572BD0471eB68C1A7E0A30770B.InitCustomDialog( "87ac93d9_1cea_4d01_b8ae4b1b0f4b8dea" );
+// {{ 60 1 0 "3d2fd83a_4670_45f4_8870b3883336656b" "{998A7CCC-4374-484D-A6ED-E8A4F0EB71BA}"
+customDialogE46D62572BD0471eB68C1A7E0A30770B.InitCustomDialog( "3d2fd83a_4670_45f4_8870b3883336656b" );
 customDialogE46D62572BD0471eB68C1A7E0A30770B.SetCustomDialogProperty( "textHeader.Text", u_strWorkflowName );
 customDialogE46D62572BD0471eB68C1A7E0A30770B.SetCustomDialogProperty( "numeric1.Maximum", u_intMaxPlateNumber );
 customDialogE46D62572BD0471eB68C1A7E0A30770B.ShowCustomDialog();
@@ -516,7 +519,6 @@ private timer tmrPulldown;
 private timer tmrElute;
 private variable l_intEtOHRemovalVol;
 private variable intTime_BeadPulldown;
-private variable intTime_Pulldown;
 private variable intTime_Drying;
 private variable intTime_Elute;
 private variable intTime_Bind;
@@ -1544,4 +1546,4 @@ TRACELEVEL::TraceAction(TRACE_LEVEL_RELEASE, TRACELEVEL::ACTION::START, Translat
 }
 // }} ""
 /* {{ 2 "SubmethodInsertLine" "" */ // }} ""
-// $$author=ch33$$valid=0$$time=2026-09-01 13:35$$checksum=7cb7b1f6$$length=083$$
+// $$author=ch33$$valid=0$$time=2026-09-01 14:46$$checksum=a09055f4$$length=083$$
