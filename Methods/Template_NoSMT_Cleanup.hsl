@@ -8,6 +8,8 @@ global device ML_STAR ("SangerCleanup\\Deck Layouts\\Sanger_BeadCleanup_General_
  namespace _Method { #include "load_instructions.hs_" } 
  namespace _Method { #include "NTRDirectUse_WGSPCRXP.hs_" } 
  namespace _Method { #include "HSLSeqLib.hsl" } 
+ namespace _Method { #include "WSI\\SlackMessenger\\SlackMessenger_V2.hs_" } 
+ namespace _Method { #include "WSI\\GitHub Integrations\\GitHubIntegrations.hs_" } 
 /* {{ 2 "LibraryInsertLine" "" */ // }} ""
 variable blnSimulationMode;
 variable retValueDialog;
@@ -57,6 +59,8 @@ PTL::SetLoadingStateDefault("KitLotCheckEnabled", hslFalse);
 CHECKCARRIERPRESENCEABSENCE::_InitLibrary();
 LOAD_INSTRUCTIONS::_InitLibrary();
 NTRDIRECTUSE_WGSPCRXP::_InitLibrary();
+SLACKMESSENGER_V2::_InitLibrary();
+GITHUBINTEGRATIONS::_InitLibrary();
 ::RegisterAbortHandler( "OnAbort");
 // }} ""
 // {{ 1 1 0 "57671b3f_b94b_47c8_ba07e5029a835a50" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
@@ -228,8 +232,10 @@ D_MethodComplete();
 CHECKCARRIERPRESENCEABSENCE::_ExitLibrary();
 LOAD_INSTRUCTIONS::_ExitLibrary();
 NTRDIRECTUSE_WGSPCRXP::_ExitLibrary();
+SLACKMESSENGER_V2::_ExitLibrary();
+GITHUBINTEGRATIONS::_ExitLibrary();
 // }} ""
 // {{{ 5 "main" "End"
 } }
 // }} ""
-// $$author=ch33$$valid=0$$time=2026-08-28 08:31$$checksum=cca38abe$$length=083$$
+// $$author=ch33$$valid=0$$time=2026-09-01 11:38$$checksum=cbd80478$$length=083$$
