@@ -1,0 +1,18 @@
+
+// this ALWAYS GENERATED file contains the sub-method library header
+// Generated at 01/09/2026 10:22:53
+
+#pragma once
+#ifndef HSL_RUNTIME
+namespace SLACKMESSENGER_V2 {
+function _InitLibrary() { }
+function _ExitLibrary() { }
+function SelectMessagingPlatform( variable intDefaultOption ) void { }
+function SendUpdate( device & ML_STAR, variable i_strSlackMessage ) void { }
+} // namespace
+#endif
+
+#ifdef HSL_RUNTIME
+#include __filename__ ".hsi"
+#endif
+// $$author=ch33$$valid=0$$time=2026-09-01 10:22$$checksum=1f5a29f8$$length=081$$
