@@ -21,7 +21,6 @@ variable u_intBeadVolume_Loading;
 variable u_intTipsRequired;
 variable u_strMagnetType;
 dialog customDialog14093038CF5D47f8AEF21EA6CDFC6D76;
-variable rtnValue;
 variable u_strWorkflowName;
 dialog customDialogAEFFEFC06E7A4619AD79ACA1CE501C8D;
 variable u_strTipCounter;
@@ -243,4 +242,4 @@ GITHUBINTEGRATIONS::_ExitLibrary();
 // {{{ 5 "main" "End"
 } }
 // }} ""
-// $$author=ta16$$valid=0$$time=2026-09-09 11:00$$checksum=07787b95$$length=083$$
+// $$author=Hamilton$$valid=0$$time=2026-09-09 12:31$$checksum=e53fd547$$length=087$$
