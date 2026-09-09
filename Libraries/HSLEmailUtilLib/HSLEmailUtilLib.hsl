@@ -1,0 +1,238 @@
+// This is a part of the Email Utility Library.
+// Copyright (C) by HAMILTON Reno USA
+// All rights reserved.
+//
+// Modification History
+// 2011-02-11  Marek Rybka : Initial file creation.
+//
+
+
+
+#ifndef __HSLEMAILUTIL_hsl__
+#define __HSLEMAILUTIL_hsl__	1
+
+// --------------------------------------------------------------------------------------
+// Interface to the Email Utility Library
+// --------------------------------------------------------------------------------------
+
+#ifndef HSL_RUNTIME
+namespace EmailUtilLib
+{
+   //Sets the recievers email address
+   function ChangeRecieverAddress(variable& newEmailAddressOfReciever) void {}  //[in]:  New e-mail address of the reciever
+   
+   //Returns the e-mail address of the reciever as configures using HxGruConfig.exe
+   function GetCurrentRecieverAddress() variable      {return(0);}
+
+   //Looks up the current user name in the email database and sets the reciever address to that.
+   function SetRecieverAddressToCurrentUser() void {}
+
+   // send a email through a SMTP server. returns a empty string if the function was successful,
+	// otherwise it returns the error string.
+   function SendEMail(                             
+	  		                 variable to,        // i: the receiver of the email
+			                 variable subject,   // i: the subject of the email
+			                 variable body       // i: the body of the email
+		                  ) variable	          // o: return value  hslTrue  = the email was sending succefully
+                                              //                  hslFalse = the email was not sending
+		{return(0);}
+
+   // Returns the e-mail address of the sender as configured using HxGruConfig.exe.
+   function GetEMailAddressOfSender() variable		{return(0);}
+
+   // Sets the e-mail address of the sender analogous to using HxGruConfig.exe.
+   function SetEMailAddressOfSender(variable& newEMailAddressOfSender) void   {}	// [in]: New e-mail address of the sender (string).
+
+   // Returns the SMTP server host name as configured using HxGruConfig.exe.
+   function GetSMTPServerHostName() variable		{return(0);}
+
+   // Sets the SMTP server host name analogous to using HxGruConfig.exe.
+   function SetSMTPServerHostName(variable& newSMTPServerHostName) void {}		// [in]: New SMTP server host name (string).
+}
+#endif
+
+// --------------------------------------------------------------------------------------
+// Implementation of the Email Utility Library
+// --------------------------------------------------------------------------------------
+
+#ifdef HSL_RUNTIME
+namespace EmailUtilLib
+{
+   #ifndef __HSLStringTableLib_hsl__
+	#include "HSLStringTableLib.hs_"
+	#endif
+
+   #ifndef __HSLUtilLib_hsl__
+   #include "HSLUtilLib.hsl"
+   #endif
+
+   #ifndef __HSLStrLib_hsl__
+   #include "HSLStrLib.hsl"
+   #endif
+
+   // --------------------------------------------------------------------------------------
+	// Error Ids
+	// --------------------------------------------------------------------------------------
+
+	namespace IDE
+	{
+		static const variable first(0);											// guard
+		static const variable noError(first);									// No error.
+		static const variable invalidParameter(first + 1);					// The parameter is incorrect.
+		static const variable last(first + 1);									// guard
+	}
+
+	// --------------------------------------------------------------------------------------
+	// String Ids
+	// --------------------------------------------------------------------------------------
+
+	namespace IDS
+	{
+		static const variable first(IDE::last + 1);							// guard
+		static const variable helpFileName(first + 2);						// help file name
+		static const variable last(first + 2);									// guard
+	}
+
+
+   // --------------------------------------------------------------------------------------
+	// Exception Handling
+	// --------------------------------------------------------------------------------------
+
+	namespace Error
+	{
+		static function Raise(														// raises a runtime error
+			variable errorId,															// i: error id, one of IDE
+			variable& fileName,														// i: file name
+			variable& funcName,														// i: function name
+			variable& lineNumber)													// i: line number
+		{
+			variable description("");
+
+			// set error description
+			description = fileName + "(" + lineNumber + ") : " + funcName + "()\n" + StringTable::Load(errorId);
+			err.SetDescription(description);
+
+			// raise error
+			err.Raise(errorId, err.GetDescription(), StringTable::Load(IDS::helpFileName));
+		}
+	}
+
+   // --------------------------------------------------------------------------------------
+	// Library Initialization 
+	// --------------------------------------------------------------------------------------
+  
+   static variable initializedLib(hslFalse);	
+   function InitEmailLibrary()
+   {
+      if (!initializedLib)
+		{
+			StringTable::Init("HSLEmailLib");
+			#ifdef _DEBUG
+			//StringTable::Dump();
+			#endif
+			initializedLib = hslTrue;
+		}
+		return(initializedLib);
+   }
+
+   // --------------------------------------------------------------------------------------
+	// General functions for library
+	// --------------------------------------------------------------------------------------
+
+   function IsString(variable var) variable
+	{
+		return(hslString.Compare(GetType(var)) == 0);
+	}
+
+   // --------------------------------------------------------------------------------------
+	// Email functions
+	// --------------------------------------------------------------------------------------
+
+   //Sets the recievers email address
+   function ChangeRecieverAddress(variable& newEmailAddressOfReciever) void 
+   {
+      object mailSettings;
+
+      // check params to be valid
+		if (!IsString(newEmailAddressOfReciever))
+			Error::Raise(IDE::invalidParameter, GetFileName(), GetFunctionName(), GetLineNumber());
+      mailSettings.CreateObject("Hamilton.HxServicesErrorEvent");
+      mailSettings.SendAddress = newEmailAddressOfReciever;
+
+   }
+
+   //Returns the e-mail address of the reciever as configures using HxGruConfig.exe
+   function GetCurrentRecieverAddress() variable
+   {
+      object mailSettings;
+      variable recieverAddress ("");
+      mailSettings.CreateObject("Hamilton.HxServicesErrorEvent");
+
+      recieverAddress = mailSettings.SendAddress;
+      Trace("Current Email reciever address: " + recieverAddress);
+
+      return(recieverAddress);
+   }
+
+   //Looks up the current user name in the email database and sets the reciever address to that.
+   function SetRecieverAddressToCurrentUser() void
+   {
+      variable userName (StrMakeUpper(GetUserName()));
+      variable newEmailAddress ("");
+      
+      variable sqlCmnd ("SELECT [EMAIL] FROM [UserEmailAddresses] WHERE [USERID] = '" + userName + "'");
+      variable connString ("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=\"C:\\Program Files\\HAMILTON\\Library\\EmailUtilities\\UserEmailDB.mdb\"; ;");
+      file emailDB;
+
+      Trace("UserName: " + userName);
+      emailDB.Open( "", hslRead, sqlCmnd, connString );
+
+      newEmailAddress = emailDB.ReadString( );
+
+      emailDB.Close();
+
+      Trace( newEmailAddress );
+
+      ChangeRecieverAddress(newEmailAddress);
+   }
+
+   // send a email through a SMTP server. returns a empty string if the function was successful,
+	// otherwise it returns the error string.
+   function SendEMail(                             
+	  		                 variable to,        // i: the receiver of the email
+			                 variable subject,   // i: the subject of the email
+			                 variable body       // i: the body of the email
+		                  ) variable	          // o: return value  hslTrue  = the email was sending succefully
+                                              //                  hslFalse = the email was not sending
+   {
+      return(Util::SendEMail(to, subject, body));
+   }
+
+   // Returns the e-mail address of the sender as configured using HxGruConfig.exe.
+   function GetEMailAddressOfSender() variable
+   {
+      return(Util::GetEMailAddressOfSender());
+   }
+
+   // Sets the e-mail address of the sender analogous to using HxGruConfig.exe
+   function SetEMailAddressOfSender(variable& newEMailAddressOfSender) void
+   {
+      Util::SetEMailAddressOfSender(newEMailAddressOfSender);
+   }
+
+   // Returns the SMTP server host name as configured using HxGruConfig.exe.
+   function GetSMTPServerHostName() variable
+   {
+      return(Util::GetSMTPServerHostName());
+   }
+
+   // Sets the SMTP server host name analogous to using HxGruConfig.exe.
+   function SetSMTPServerHostName(variable& newSMTPServerHostName) void
+   {
+      Util::SetSMTPServerHostName(newSMTPServerHostName);
+   }
+
+}
+#endif
+#endif
+// $$author=Rybka_M$$valid=0$$time=2011-02-11 14:29$$checksum=e236e153$$length=086$$
