@@ -196,16 +196,16 @@ B_LoadInstructions();
 // {{ 42 1 0 "ef5d6eb7_4070_4d46_af0593b47ed4029e" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 43 1 0 "c5c10a02_9a21_4165_af878e797ed3fb1c" "{998A7CCC-4374-484D-A6ED-E8A4F0EB71BA}"
-customDialog14093038CF5D47f8AEF21EA6CDFC6D76.InitCustomDialog( "c5c10a02_9a21_4165_af878e797ed3fb1c" );
+// {{ 43 1 0 "bc64d107_9996_426c_a8b5709aa8c64daa" "{998A7CCC-4374-484D-A6ED-E8A4F0EB71BA}"
+customDialog14093038CF5D47f8AEF21EA6CDFC6D76.InitCustomDialog( "bc64d107_9996_426c_a8b5709aa8c64daa" );
 customDialog14093038CF5D47f8AEF21EA6CDFC6D76.SetCustomDialogProperty( "textHeader.Text", u_strWorkflowName );
 customDialog14093038CF5D47f8AEF21EA6CDFC6D76.ShowCustomDialog();
-rtnValue = customDialog14093038CF5D47f8AEF21EA6CDFC6D76.GetCustomDialogProperty( "ReturnValue" );
+retValueDialog = customDialog14093038CF5D47f8AEF21EA6CDFC6D76.GetCustomDialogProperty( "ReturnValue" );
 // }} ""
 // {{ 44 1 0 "8d52254e_552c_4cad_892523cbf6fec2c5" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 45 1 0 "5bf251e4_1668_4359_877b92beda9cac51" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 45 1 0 "2b9f8683_24fe_4163_a01277b9614943cb" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 if (retValueDialog == 2)
 {
 // }} ""
@@ -218,7 +218,7 @@ TRACELEVEL::Trace_02(TRACE_LEVEL_NONE, Translate("## Method has been aborted by 
 // {{ 48 1 0 "1244daf1_1442_46d8_8306daf135810107" "{930D6C31-8EFB-11d4-A3BA-002035848439}"
 abort;
 // }} ""
-// {{ 49 1 0 "5bf251e4_1668_4359_877b92beda9cac51" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 49 1 0 "2b9f8683_24fe_4163_a01277b9614943cb" "{B31F3531-5D80-11d4-A5EB-0050DA737D89}"
 }
 // }} ""
 // {{ 50 1 0 "8d52254e_552c_4cad_892523cbf6fec2c5" "{586C3429-F931-405f-9938-928E22C90BFA}"
@@ -243,4 +243,4 @@ GITHUBINTEGRATIONS::_ExitLibrary();
 // {{{ 5 "main" "End"
 } }
 // }} ""
-// $$author=ch33$$valid=0$$time=2026-09-01 15:34$$checksum=a81136a5$$length=083$$
+// $$author=ta16$$valid=0$$time=2026-09-09 11:00$$checksum=07787b95$$length=083$$
