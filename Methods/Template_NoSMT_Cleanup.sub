@@ -1236,8 +1236,8 @@ _PreWet_Mix(ML_STAR.ResElution, 52, Translate("DNAP_Tip_300ul_96COREHead_Superna
 	ML_STAR._7DE53592_BBE5_4f1d_B657_161F1AAECA3E("00e4dc1b_ef26_4cba_9a2590fa66ba5c87"); // EasyHead96Dispense
 }
 // }} ""
-// {{{ 370 1 0 "c72dcb35_de5c_4022_b6a6d86477ffb656" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
-_PreWet_Mix(ML_STAR.ResElution, 40, Translate("DNAP_Tip_300ul_96COREHead_WaterReservoir_DispenseSurface_Empty"), 0.5, 10, 0);
+// {{{ 370 1 0 "49efe997_6fc1_4ef4_b2a66e3fdc6fd61f" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
+_PreWet_Mix(ML_STAR.BindPlates, 40, Translate("DNAP_Tip_300ul_96COREHead_WaterReservoir_DispenseSurface_Empty"), 0.5, 10, 0);
 // }} ""
 // {{ 371 1 0 "b1828a96_cb43_4e88_862394c7ef899b4d" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
@@ -1554,4 +1554,4 @@ TRACELEVEL::TraceAction(TRACE_LEVEL_RELEASE, TRACELEVEL::ACTION::START, Translat
 }
 // }} ""
 /* {{ 2 "SubmethodInsertLine" "" */ // }} ""
-// $$author=Hamilton$$valid=0$$time=2026-09-09 12:31$$checksum=a3e952d3$$length=087$$
+// $$author=Hamilton$$valid=0$$time=2026-09-10 14:08$$checksum=6c9cb7ef$$length=087$$
