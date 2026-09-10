@@ -1,0 +1,13 @@
+- Consider removing pre-wet step for bead addition from template
+- Update LQ dispense modes - surface empty
+- Correct pre-mix tips / mix, assign variable to volume for pipetting steps
+	- Add a list of LQCs to the description
+	- Update pre-mix pipetting steps in the template to surface empty
+
+- Workshop a way to clarify what steps require editing
+- Default ethanol pre-wet LQC doesn't match ISC
+	ISC uses: "DNAP_Tip_300ul_96COREHead_EtOH_FastDispenseSwap_DispenseSurface_Empty"
+- Does 0 mix cycles in the pre-wet smt break it?
+- Review ethanol LQCs 
+- Notify Ops that we have added a pre-wet step to the elution addition
+- Edit dialog box title text size
