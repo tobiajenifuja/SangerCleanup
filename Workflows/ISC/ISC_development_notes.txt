@@ -11,3 +11,17 @@
 - Review ethanol LQCs 
 - Notify Ops that we have added a pre-wet step to the elution addition
 - Edit dialog box title text size
+
+
+Reagents for testing:
+[X] Elution buffer
+[] 80% Ethanol
+[] SPRI Beads
+[] Pipette
+[] New NTR tips
+
+- Change sample aspirate to remove pre-mix and lq follow
+- Remove plate check on transport
+- Remove shaking from drying steps
+- Move tmrElute to above the transport steps
+- 
