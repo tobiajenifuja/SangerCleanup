@@ -7,7 +7,7 @@
  namespace _Method { #include "NTRDirectUse_WGSPCRXP.hs_" } 
  namespace _Method { #include "HSLSeqLib.hsl" } 
  namespace _Method { #include "WSI\\SlackMessenger\\SlackMessenger_V2.hs_" } 
- namespace _Method { #include "WSI\\GitHub Integrations\\GitHubIntegrations.hs_" } 
+ namespace _Method { #include "GitHub Integrations\\GitHubIntegrations.hs_" } 
 #include "SangerCleanup\\Deck Layouts\\928G - Elisa\\Cleanup_General_STAR_928G.res"
 /* {{ 2 "LibraryInsertLine" "" */ // }} ""
 variable blnSimulationMode;
@@ -103,8 +103,8 @@ u_strWorkflowName = Translate("ISC PCR XP");
 // {{ 14 1 0 "37f72959_72ba_452f_86a65e10c0974dc3" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
 u_strTipCounter = Translate("NTR_300_96MPH");
 // }} ""
-// {{ 15 1 0 "47ea1e42_3055_426a_a18b8704ea0e96e1" "{B31F3544-5D80-11d4-A5EB-0050DA737D89}"
-u_strWorkflowName = u_strWorkflowName + Translate(" Bead Cleanup");
+// {{ 15 1 0 "c29e6957_8c66_4285_929a6862ef252af0" "{B31F3544-5D80-11d4-A5EB-0050DA737D89}"
+u_strWorkflowName = u_strWorkflowName + Translate(" Cleanup");
 // }} ""
 // {{ 16 1 0 "ada4b90e_1fdc_4d8e_856b942a8bd5bde4" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
@@ -137,8 +137,8 @@ if (blnSimulationMode == 1)
 // {{ 25 1 0 "c03b20a0_2eab_41e6_a91903eb5619f838" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
 // }} ""
-// {{ 26 1 0 "96c1d39f_98b3_4b44_b9828b7378c0115b" "{998A7CCC-4374-484D-A6ED-E8A4F0EB71BA}"
-customDialogAEFFEFC06E7A4619AD79ACA1CE501C8D.InitCustomDialog( "96c1d39f_98b3_4b44_b9828b7378c0115b" );
+// {{ 26 1 0 "8bcc3adc_a301_4d9f_a6170a5cbbace008" "{998A7CCC-4374-484D-A6ED-E8A4F0EB71BA}"
+customDialogAEFFEFC06E7A4619AD79ACA1CE501C8D.InitCustomDialog( "8bcc3adc_a301_4d9f_a6170a5cbbace008" );
 customDialogAEFFEFC06E7A4619AD79ACA1CE501C8D.SetCustomDialogProperty( "textHeader.Text", u_strWorkflowName );
 customDialogAEFFEFC06E7A4619AD79ACA1CE501C8D.ShowCustomDialog();
 retValueDialog = customDialogAEFFEFC06E7A4619AD79ACA1CE501C8D.GetCustomDialogProperty( "ReturnValue" );
@@ -198,8 +198,8 @@ B_LoadInstructions();
 // {{ 43 1 0 "ef5d6eb7_4070_4d46_af0593b47ed4029e" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{ 44 1 0 "bc64d107_9996_426c_a8b5709aa8c64daa" "{998A7CCC-4374-484D-A6ED-E8A4F0EB71BA}"
-customDialog14093038CF5D47f8AEF21EA6CDFC6D76.InitCustomDialog( "bc64d107_9996_426c_a8b5709aa8c64daa" );
+// {{ 44 1 0 "3895373d_e705_4c50_982b523195a13995" "{998A7CCC-4374-484D-A6ED-E8A4F0EB71BA}"
+customDialog14093038CF5D47f8AEF21EA6CDFC6D76.InitCustomDialog( "3895373d_e705_4c50_982b523195a13995" );
 customDialog14093038CF5D47f8AEF21EA6CDFC6D76.SetCustomDialogProperty( "textHeader.Text", u_strWorkflowName );
 customDialog14093038CF5D47f8AEF21EA6CDFC6D76.ShowCustomDialog();
 retValueDialog = customDialog14093038CF5D47f8AEF21EA6CDFC6D76.GetCustomDialogProperty( "ReturnValue" );
@@ -245,4 +245,4 @@ GITHUBINTEGRATIONS::_ExitLibrary();
 // {{{ 5 "main" "End"
 } }
 // }} ""
-// $$author=Hamilton$$valid=0$$time=2026-09-10 16:55$$checksum=7c335e1d$$length=087$$
+// $$author=kn7$$valid=0$$time=2026-09-11 16:09$$checksum=edef7774$$length=082$$
