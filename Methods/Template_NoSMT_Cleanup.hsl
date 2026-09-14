@@ -9,7 +9,7 @@ global device ML_STAR ("SangerCleanup\\Deck Layouts\\Sanger_BeadCleanup_General_
  namespace _Method { #include "NTRDirectUse_WGSPCRXP.hs_" } 
  namespace _Method { #include "HSLSeqLib.hsl" } 
  namespace _Method { #include "WSI\\SlackMessenger\\SlackMessenger_V2.hs_" } 
- namespace _Method { #include "GitHub Integrations\\GitHubIntegrations.hs_" } 
+ namespace _Method { #include "WSI\\GitHub Integrations\\GitHubIntegrations.hs_" } 
 /* {{ 2 "LibraryInsertLine" "" */ // }} ""
 variable blnSimulationMode;
 variable HHS1;
@@ -242,4 +242,4 @@ GITHUBINTEGRATIONS::_ExitLibrary();
 // {{{ 5 "main" "End"
 } }
 // }} ""
-// $$author=kn7$$valid=0$$time=2026-09-11 16:17$$checksum=37ffb241$$length=082$$
+// $$author=Hamilton$$valid=0$$time=2026-09-14 15:12$$checksum=2954a995$$length=087$$

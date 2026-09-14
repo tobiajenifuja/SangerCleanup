@@ -1027,8 +1027,8 @@ TRACELEVEL::Trace_02(TRACE_LEVEL_RELEASE, Translate(">> Step 8. "), Translate("D
 // {{ 313 1 0 "d2bb6848_8092_4f42_8ea06c359c74e009" "{586C3429-F931-405f-9938-928E22C90BFA}"
 
 // }} ""
-// {{{ 314 1 0 "4b4c0e37_655c_4ed2_8b0e2c4d93001362" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
-_Channels_LabwareTransport(ML_STAR.BindPlatesOnMagnet, ML_STAR.HHS, 2, 1);
+// {{{ 314 1 0 "0e340d75_58b6_4211_8a80b9f6b8eac638" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
+_Channels_LabwareTransport(ML_STAR.BindPlatesOnMagnet, ML_STAR.HHS, 2, 0);
 // }} ""
 // {{ 315 1 0 "b063aa7b_0094_4bcf_9ae636c109030bc3" "{B31F353E-5D80-11d4-A5EB-0050DA737D89}"
 if( 0 == tmrDrying.SetTimer(intTime_Drying) )
@@ -1141,8 +1141,8 @@ if( 0 == tmrElute.SetTimer(intTime_Elute) )
     MECC::RaiseRuntimeErrorEx(-1355939584, MECC::IDS::stepNameTimerStart, MECC::IDS::errorStepFailed, "", "HxMetEdCompCmd");
 }
 // }} ""
-// {{{ 347 1 0 "61c3edef_bb07_4316_8c678fb8cb37b20e" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
-_Channels_LabwareTransport(ML_STAR.BindPlates, ML_STAR.HHS, 2, 1);
+// {{{ 347 1 0 "d95b5eb6_5157_45c5_b3203c1670921620" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
+_Channels_LabwareTransport(ML_STAR.BindPlates, ML_STAR.HHS, 2, 0);
 // }} ""
 // {{{ 348 1 0 "73295919_25bb_4dcd_94882c24efadcc37" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
 HSLHamHeaterShaker::StartShaker(HHS1, 1000);
@@ -1385,4 +1385,4 @@ TRACELEVEL::TraceAction(TRACE_LEVEL_RELEASE, TRACELEVEL::ACTION::START, Translat
 }
 // }} ""
 /* {{ 2 "SubmethodInsertLine" "" */ // }} ""
-// $$author=kn7$$valid=0$$time=2026-09-11 16:09$$checksum=40e34cea$$length=082$$
+// $$author=Hamilton$$valid=0$$time=2026-09-14 15:11$$checksum=6aabe23e$$length=087$$
