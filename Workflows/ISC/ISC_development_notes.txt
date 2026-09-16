@@ -15,10 +15,10 @@
 
 Reagents for testing:
 [X] Elution buffer
-[] 80% Ethanol
-[] SPRI Beads
-[] Pipette
-[] New NTR tips
+[X] 80% Ethanol
+[X] SPRI Beads
+[X] Pipette
+[X] New NTR tips
 
 - Change sample aspirate to remove pre-mix and lq follow - DONE
 - Remove plate check on transport - DONE
