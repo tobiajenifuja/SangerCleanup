@@ -1,3 +1,18 @@
+====================
+16/08/2026
+Wells with 3uL left: B1, G1, E12, G12
+Lowered teach points on magnets to see if this improves
+
+2nd run: C1 has 2uL, rest of the wells were quite empty
+
+Planning a 3rd run tomorrow moving up 0.1mm - expecting LQ handling to change once we add DNA though
+
+Bottom left head tilt favouring H1 on 928G (tested with feeler gauges)
+A1 = 0.14mm
+A12 = 0.46mm
+H12 = 0.3mm
+
+====================
 - Consider removing pre-wet step for bead addition from template - unnecessary, using this to ensure equal bead volumes
 - Update LQ dispense modes - surface empty - DONE (DOUBLE CHECK)
 - Correct pre-mix tips / mix, assign variable to volume for pipetting steps - DONE
@@ -26,3 +41,4 @@ Reagents for testing:
 - Move tmrElute to above the transport steps - DONE
 - Check if minimising z axis move is safe to use on prewet steps
 - Change transfer to HHS for drying and elution to keep core grips on
+
