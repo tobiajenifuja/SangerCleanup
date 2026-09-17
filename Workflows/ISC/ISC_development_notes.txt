@@ -1,4 +1,11 @@
 ====================
+17/08/2026
+Raised z-height on mag pos by 0.1mm
+
+Much more uniform in leaving behind 2uL
+Bead carryover in H7 and C8
+
+====================
 16/08/2026
 Wells with 3uL left: B1, G1, E12, G12
 Lowered teach points on magnets to see if this improves
