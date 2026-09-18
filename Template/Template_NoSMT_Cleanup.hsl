@@ -1,5 +1,5 @@
-#include "SangerCleanup\\Deck Layouts\\Sanger_BeadCleanup_General_STAR_Template.res"
-global device ML_STAR ("SangerCleanup\\Deck Layouts\\Sanger_BeadCleanup_General_STAR_Template.lay", "ML_STAR", hslTrue);
+#include "SangerCleanup\\Deck Layouts\\Template\\Sanger_BeadCleanup_General_STAR_Template.res"
+global device ML_STAR ("SangerCleanup\\Deck Layouts\\Template\\Sanger_BeadCleanup_General_STAR_Template.lay", "ML_STAR", hslTrue);
  namespace _Method { #include "HSLML_STARLib.hsl" } 
  namespace _Method { #include "ASWStandard\\TraceLevel\\TraceLevel.hsl" } 
  namespace _Method { #include "HslHamHeaterShakerLib.hsl" } 
@@ -242,4 +242,4 @@ GITHUBINTEGRATIONS::_ExitLibrary();
 // {{{ 5 "main" "End"
 } }
 // }} ""
-// $$author=kn7$$valid=0$$time=2026-09-18 16:08$$checksum=1feda890$$length=082$$
+// $$author=kn7$$valid=0$$time=2026-09-18 16:19$$checksum=93855d98$$length=082$$
