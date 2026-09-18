@@ -73,7 +73,7 @@ GITHUBINTEGRATIONS::_InitLibrary();
 // {{ 4 1 0 "17f02550_c551_4c94_97754849dd2969f9" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
 u_intMaxPlateNumber = 2;
 // }} ""
-// {{ 5 1 0 "d1f1d946_a74d_4f75_9404c9060fdd2094" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
+// {{ 5 1 0 "c6e26dcb_370e_4e51_a7f876b79ed7415c" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
 u_intNuncDeadVolume_Loading = 20;
 // }} ""
 // {{ 6 1 0 "79492aaf_5198_40db_b9bbdc6545ca69d2" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
@@ -242,4 +242,4 @@ GITHUBINTEGRATIONS::_ExitLibrary();
 // {{{ 5 "main" "End"
 } }
 // }} ""
-// $$author=Hamilton$$valid=0$$time=2026-09-16 11:00$$checksum=9751e06f$$length=087$$
+// $$author=kn7$$valid=0$$time=2026-09-18 16:08$$checksum=1feda890$$length=082$$
