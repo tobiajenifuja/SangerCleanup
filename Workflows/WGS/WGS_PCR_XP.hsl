@@ -73,26 +73,26 @@ GITHUBINTEGRATIONS::_InitLibrary();
 // {{ 4 1 0 "17f02550_c551_4c94_97754849dd2969f9" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
 u_intMaxPlateNumber = 2;
 // }} ""
-// {{ 5 1 0 "c6e26dcb_370e_4e51_a7f876b79ed7415c" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
-u_intNuncDeadVolume_Loading = 20;
+// {{ 5 1 0 "4ff280ba_8a69_447e_8289bb6b63d301f2" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
+u_intNuncDeadVolume_Loading = 30;
 // }} ""
-// {{ 6 1 0 "79492aaf_5198_40db_b9bbdc6545ca69d2" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
-u_intBeadVolume_Loading = 50;
+// {{ 6 1 0 "7c4d25e8_fb3b_43e6_827279adf46a8fc5" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
+u_intBeadVolume_Loading = 60;
 // }} ""
 // {{ 7 1 0 "9b8733c6_d3dd_4858_a1017bb553c0324d" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
 u_intEBVolume_Loading = 50;
 // }} ""
-// {{ 8 1 0 "aaf28b12_88ba_444d_aca287ae41ab3506" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
-u_intEtOHVolume_Loading = 50;
+// {{ 8 1 0 "c07f7f13_82a9_4326_bc9718c0ec5c610b" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
+u_intEtOHVolume_Loading = 100;
 // }} ""
-// {{ 9 1 0 "262ed026_7dec_4d6f_9cd165258e2a8786" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
-u_intTipsRequired = 480;
+// {{ 9 1 0 "a0e8f601_ea9b_4052_8af68ad7ad5fcbd1" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
+u_intTipsRequired = 576;
 // }} ""
-// {{ 10 1 0 "e7258b7c_7a34_4441_90c4a569c6045136" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
-u_strMagnetType = Translate("Alpaqua FLX");
+// {{ 10 1 0 "311134e7_430d_463b_bd324864be0a51e0" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
+u_strMagnetType = Translate("Alpaqua 96S Ring Magnet");
 // }} ""
-// {{ 11 1 0 "b015aa54_e4c0_418b_982dd313af62dabd" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
-u_strWorkflowName = Translate("Temp");
+// {{ 11 1 0 "6f9560a6_ed85_4ed9_97c56a55aaf6dad3" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
+u_strWorkflowName = Translate("WGS_PCR");
 // }} ""
 // {{ 12 1 0 "f14f4531_de90_4b82_97ac141dfc62e191" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
 
@@ -242,4 +242,4 @@ GITHUBINTEGRATIONS::_ExitLibrary();
 // {{{ 5 "main" "End"
 } }
 // }} ""
-// $$author=kn7$$valid=0$$time=2026-09-18 16:21$$checksum=61c01bd5$$length=082$$
+// $$author=kn7$$valid=0$$time=2026-09-22 11:43$$checksum=8c864a57$$length=082$$
